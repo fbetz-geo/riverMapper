@@ -1,11 +1,16 @@
 Package: riverMapper
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Type: Package
+Title: R Package for River Corridor Mapping
+Version: 0.1.0
+Authors: Florian betz
+Maintainer: Florian Betz <riverandscience@gmail.com>
+Description: R Package designed for mapping various geomorphological and (simple)
+    vegetation attributes of river corridor. The package is specifically tailored to the
+    needs of data-scarce environments and the use of globally available (satellite) data.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Imports: 
+    RSAGA,
+    terra
