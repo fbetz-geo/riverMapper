@@ -1,0 +1,22 @@
+---
+title: "How to to do fuzzy membership based river corridor delineation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to to do fuzzy membership based river corridor delineation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+For river corridor mapping purposes, it is necessary to delineate the part of a landscape being connected to the hydrological or hydromorphological processes of the active channel. This riparian zone is characterized by a blurred boundary zone rather than sharp boundary. Fuzzy logic can capture this characteristic [(Betz et al., 2018)](https://doi.org/10.1016/j.geomorph.2018.01.024). RiverMapper implements this approach by computing membership functions of different morphometric indices and combining them to a single riparian zone membership index where 0 means not connected at all and 1 fully connected to the active channel.  
+
+First step is to compute the indices. To provide a function for this, riverMapper integrates [SAGA GIS](https://saga-gis.sourceforge.io). Anyway, indices can be provided externally as well and computed with any GIS software as long as they can be stored as raster files and have the same resolution and extent. 
+```{r,include=TRUE}
+#library(riverMapper)
+#computeIndices()
+```
