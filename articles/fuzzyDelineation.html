@@ -72,6 +72,23 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://fbetz-geo.github.io/riverMapper/">riverMapper</a></span><span class="op">)</span></span></code></pre></div>
+<p>For river corridor mapping purposes, it is necessary to delineate the
+part of a landscape being connected to the hydrological or
+hydromorphological processes of the active channel. This riparian zone
+is characterized by a blurred boundary zone rather than sharp boundary.
+Fuzzy logic can capture this characteristic <a href="https://doi.org/10.1016/j.geomorph.2018.01.024" class="external-link">(Betz et al.,
+2018)</a>. RiverMapper implements this approach by computing membership
+functions of different morphometric indices and combining them to a
+single riparian zone membership index where 0 means not connected at all
+and 1 fully connected to the active channel.</p>
+<p>First step is to compute the indices. To provide a function for this,
+riverMapper integrates <a href="https://saga-gis.sourceforge.io" class="external-link">SAGA
+GIS</a>. Anyway, indices can be provided externally as well and computed
+with any GIS software as long as they can be stored as raster files and
+have the same resolution and extent.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#library(riverMapper)</span></span>
+<span><span class="co">#computeIndices()</span></span></code></pre></div>
   </main>
 </div>
 
