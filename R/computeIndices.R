@@ -9,7 +9,7 @@
 #' @return spatRaster with the morphometric indices
 #' 
 
-computeIndices<-function(dem,channels,saga_path,indices, out_dir=tempdir()){
+computeIndices<-function(dem,channels,saga_path, out_dir=tempdir()){
   
   #Set SAGA computation environment
   saga_env<-RSAGA::rsaga.env(saga_path)

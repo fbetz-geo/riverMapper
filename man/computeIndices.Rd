@@ -4,7 +4,7 @@
 \alias{computeIndices}
 \title{Compute Morphometric Indices}
 \usage{
-computeIndices(dem, channels, saga_path, indices, out_dir = tempdir())
+computeIndices(dem, channels, saga_path, out_dir = tempdir())
 }
 \arguments{
 \item{dem}{path to the digital elevation model}
