@@ -1,4 +1,5 @@
 url: https://fbetz-geo.github.io/riverMapper/
 template:
   bootstrap: 5
+  bootswatch: materia
 
