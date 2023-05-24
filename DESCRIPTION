@@ -2,7 +2,7 @@ Package: riverMapper
 Type: Package
 Title: R Package for River Corridor Mapping
 Version: 0.1.0
-Authors: Florian betz
+Author: Florian betz
 Maintainer: Florian Betz <riverandscience@gmail.com>
 Description: R Package designed for mapping various geomorphological and (simple)
     vegetation attributes of river corridor. The package is specifically tailored to the

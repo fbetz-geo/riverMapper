@@ -21,6 +21,6 @@ You can install the development version of riverMapper from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("fbetz-geo/riverMapper")
+library(remotes)
+remotes::install_github("fbetz-geo/riverMapper")
 ```
