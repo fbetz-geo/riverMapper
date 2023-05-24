@@ -25,8 +25,7 @@ This initial release includes the fuzzy logic based delineation of river corrido
 
 
 ## Installation
-
-You can install the development version of riverMapper from GitHub with:
+You can install the development version of riverMapper from GitHub:
 
 ``` r
 library(remotes)

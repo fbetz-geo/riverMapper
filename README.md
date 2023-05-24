@@ -17,7 +17,7 @@ functionality will be added gradually.
 
 ## Installation
 
-You can install the development version of riverMapper from GitHub with:
+You can install the development version of riverMapper from GitHub:
 
 ``` r
 library(remotes)
