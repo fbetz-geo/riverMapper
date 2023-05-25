@@ -2,6 +2,9 @@
 #' @description Computes different morphometric indices useful for the fuzzy delineation of river corridors
 #' @param dem path to the digital elevation model
 #' @param channels path to raster of channel network delineated from digital elevation models
+#' @param index character; indices to be computed, can be "hdist" for horizontal distance, "vdist"   
+#' for vertical distance, "mrvbf" for multiresolution valleybottom flatness index, "TWI" for Wetness Index
+#' or "PathDist" for Path Distance
 #' @param saga_path path where the SAGA installation is found (see RSAGA::rsaga.env() for details)
 #' @param out_dir directory where to store output files
 #' @author Florian Betz

@@ -15,8 +15,10 @@ computeMembership<-function(index, x_cal_min,x_cal_max, type="linear"){
   if (type=="linear") {
     terra::app(index,function(x) {ifelse(x<x_cal_min,1,
            ifelse(x<x_cal_min,0,
-                  ifelse(x>=x_cal_min & x<=x_cal_max,(x-x_cal_min)/(x_cal_max-x_cal_min)),
-                  NA))})
+                  ifelse(x>=x_cal_min & x<=x_cal_max,(x-x_cal_min)/(x_cal_max-x_cal_min),
+                         ifelse(x>x_cal_max,1,
+                                NA))))
+                  })
     
   }
   

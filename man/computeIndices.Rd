@@ -14,6 +14,10 @@ computeIndices(dem, channels, saga_path, out_dir = tempdir())
 \item{saga_path}{path where the SAGA installation is found (see RSAGA::rsaga.env() for details)}
 
 \item{out_dir}{directory where to store output files}
+
+\item{index}{character; indices to be computed, can be "hdist" for horizontal distance, "vdist"
+for vertical distance, "mrvbf" for multiresolution valleybottom flatness index, "TWI" for Wetness Index
+or "PathDist" for Path Distance}
 }
 \value{
 spatRaster with the morphometric indices
