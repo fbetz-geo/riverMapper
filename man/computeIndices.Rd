@@ -4,7 +4,7 @@
 \alias{computeIndices}
 \title{Compute Morphometric Indices}
 \usage{
-computeIndices(dem, channels, saga_path, out_dir = tempdir())
+computeIndices(dem, channels, saga_path, index, out_dir = tempdir())
 }
 \arguments{
 \item{dem}{path to the digital elevation model}
@@ -13,11 +13,11 @@ computeIndices(dem, channels, saga_path, out_dir = tempdir())
 
 \item{saga_path}{path where the SAGA installation is found (see RSAGA::rsaga.env() for details)}
 
-\item{out_dir}{directory where to store output files}
-
 \item{index}{character; indices to be computed, can be "hdist" for horizontal distance, "vdist"
 for vertical distance, "mrvbf" for multiresolution valleybottom flatness index, "TWI" for Wetness Index
 or "PathDist" for Path Distance}
+
+\item{out_dir}{directory where to store output files}
 }
 \value{
 spatRaster with the morphometric indices
