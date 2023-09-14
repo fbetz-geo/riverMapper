@@ -19,10 +19,19 @@
     <loc>https://fbetz-geo.github.io/riverMapper/index.html</loc>
   </url>
   <url>
+    <loc>https://fbetz-geo.github.io/riverMapper/reference/aggregation.html</loc>
+  </url>
+  <url>
+    <loc>https://fbetz-geo.github.io/riverMapper/reference/centerline.html</loc>
+  </url>
+  <url>
     <loc>https://fbetz-geo.github.io/riverMapper/reference/computeIndices.html</loc>
   </url>
   <url>
     <loc>https://fbetz-geo.github.io/riverMapper/reference/computeMembership.html</loc>
+  </url>
+  <url>
+    <loc>https://fbetz-geo.github.io/riverMapper/reference/disaggregate.html</loc>
   </url>
   <url>
     <loc>https://fbetz-geo.github.io/riverMapper/reference/fuzzy_overlay.html</loc>
