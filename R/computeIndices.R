@@ -9,6 +9,8 @@
 #' @param out_dir directory where to store output files
 #' @author Florian Betz
 #' @references Betz, F., Lauermann, M., Cyffka, B. (2018): Delineation of riparian zone...
+#' @details Vertical Distance, and horizontal distance are currently computed using SAGA GIS. The computation is efficient, but not memory safe,    
+#' #' i.e. the entire DEM has to fit in RAM. Thus, it is recommended to watch memory use while computing these indices. 
 #' @return spatRaster with the morphometric indices
 #' 
 
