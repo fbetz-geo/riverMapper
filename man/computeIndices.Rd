@@ -29,7 +29,7 @@ or "PathDist" for Path Distance}
 \item{overwrite}{should already existing files be overwritten? Defaults to true and only applies to the pathDistance!}
 }
 \value{
-spatRaster with the morphometric indices
+spatRaster with the morphometric indices as layers
 }
 \description{
 Computes different morphometric indices useful for the fuzzy delineation of river corridors
