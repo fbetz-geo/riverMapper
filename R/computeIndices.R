@@ -7,6 +7,7 @@
 #' or "PathDist" for Path Distance
 #' @param saga_path path where the SAGA installation is found (see RSAGA::rsaga.env() for details)
 #' @param out_dir directory where to store output files
+#' @param overwrite should already existing files be overwritten? Defaults to true and only applies to the pathDistance!
 #' @author Florian Betz
 #' @references Betz, F., Lauermann, M., Cyffka, B. (2018): Delineation of riparian zone...
 #' @details Vertical Distance, and horizontal distance are currently computed using SAGA GIS. The computation is efficient, but not memory safe,    
@@ -14,7 +15,7 @@
 #' @return spatRaster with the morphometric indices
 #' 
 
-computeIndices<-function(dem,channels,saga_path, index,out_dir=tempdir()){
+computeIndices<-function(dem,channels,saga_path, index,out_dir=tempdir(),overwrite=FALSE){
   
   #Set SAGA computation environment
   saga_env<-RSAGA::rsaga.env(saga_path)
@@ -51,10 +52,10 @@ computeIndices<-function(dem,channels,saga_path, index,out_dir=tempdir()){
   
   #Compute path distance
   if ("pathDist" %in% index) {
-    message("Computing path distance: preparing slope raster...")
+    message("Computing path distance: preparing slope raster step 1")
     
     #compute slope as basis for the path distance
-    slope<-terra::terrain(x=dem, filename="slope.sdat")
+    slope<-terra::terrain(x=dem, filename="slope.tif")
     
     #Read channels, stack with slope raster and set proper names
     channels<-rast(channels)
@@ -62,14 +63,15 @@ computeIndices<-function(dem,channels,saga_path, index,out_dir=tempdir()){
     names(s)<-c("slope","channels")
     
     #Prepare slope raster for cost distance computation by setting target value for stream locations
+    message("Computing path distance: preparing slope raster step 2")
     slope_pathDist<-terra::ifel(is.na(s["channels"]),s["slope"],-1000)
     
     #Computing path distance
     message("Computing path Distance: Computing cumulated cost distance...")
-    pathDist<-terra::costDist(slope_pathDist,target=-1000,filename="pathDist.sdat")
+    pathDist<-terra::costDist(slope_pathDist,target=-1000,filename="pathDist.tif",overwrite=overwrite)
     
     #Adding result to stack list for the final output
-    stack_list[["pathDist"]]<-rast("pathDist.sdat")}
+    stack_list[["pathDist"]]<-rast("pathDist.tif")}
     
   #Compute wetness index
   if ("TWI" %in% index) {

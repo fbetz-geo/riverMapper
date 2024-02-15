@@ -4,7 +4,14 @@
 \alias{computeIndices}
 \title{Compute Morphometric Indices}
 \usage{
-computeIndices(dem, channels, saga_path, index, out_dir = tempdir())
+computeIndices(
+  dem,
+  channels,
+  saga_path,
+  index,
+  out_dir = tempdir(),
+  overwrite = FALSE
+)
 }
 \arguments{
 \item{dem}{path to the digital elevation model}
@@ -18,12 +25,18 @@ for vertical distance, "mrvbf" for multiresolution valleybottom flatness index, 
 or "PathDist" for Path Distance}
 
 \item{out_dir}{directory where to store output files}
+
+\item{overwrite}{should already existing files be overwritten? Defaults to true and only applies to the pathDistance!}
 }
 \value{
 spatRaster with the morphometric indices
 }
 \description{
 Computes different morphometric indices useful for the fuzzy delineation of river corridors
+}
+\details{
+Vertical Distance, and horizontal distance are currently computed using SAGA GIS. The computation is efficient, but not memory safe,
+#' i.e. the entire DEM has to fit in RAM. Thus, it is recommended to watch memory use while computing these indices.
 }
 \references{
 Betz, F., Lauermann, M., Cyffka, B. (2018): Delineation of riparian zone...
