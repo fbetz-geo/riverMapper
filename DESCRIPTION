@@ -15,8 +15,10 @@ Imports:
     bcp,
     magrittr,
     RSAGA,
+    sf,
     terra,
-    trend
+    trend,
+    utils
 URL: https://fbetz-geo.github.io/riverMapper/
 Suggests: 
     knitr,

@@ -9,4 +9,7 @@
 #' @references Betz, F., Lauermann, M., Cyffka, B. (2020): Open source riverscapes: 
 #' @import terra
 #' @import RSAGA
+#' @import sf
+#' @import magrittr
+#' @import utils
 NULL

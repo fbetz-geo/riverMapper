@@ -13,7 +13,7 @@ densify_sf <- function(geometry, distance) {
   
   # Function to add points to a single line
   add_points_to_line <- function(line, dist) {
-    coords <- st_coordinates(line)
+    coords <- sf::st_coordinates(line)
     new_coords <- coords[1, , drop = FALSE]
     for (i in 2:nrow(coords)) {
       segment_start = coords[i - 1, ]
@@ -26,7 +26,7 @@ densify_sf <- function(geometry, distance) {
       }
       new_coords = rbind(new_coords, coords[i, , drop = FALSE])
     }
-    return(st_linestring(new_coords))
+    return(sf::st_linestring(new_coords))
   }
   
   # Apply the function to each geometry
