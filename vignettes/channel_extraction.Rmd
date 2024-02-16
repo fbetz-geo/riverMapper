@@ -1,0 +1,19 @@
+---
+title: "Channel Network Extraction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Channel Network Extraction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(riverMapper)
+```
