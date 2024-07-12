@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(riverMapper)
+#library(riverMapper)
 ```
 For river corridor mapping purposes, it is necessary to delineate the part of a landscape being connected to the hydrological or hydromorphological processes of the active channel. This riparian zone is characterized by a blurred boundary zone rather than sharp boundary. Fuzzy logic can capture this characteristic [(Betz et al., 2018)](https://doi.org/10.1016/j.geomorph.2018.01.024). RiverMapper implements this approach by computing membership functions of different morphometric indices and combining them to a single riparian zone membership index where 0 means not connected at all and 1 fully connected to the active channel.  
 
