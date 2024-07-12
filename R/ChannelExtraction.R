@@ -103,6 +103,7 @@ channelExtraction<-function(dem,preprocess="breach",processed_dem,min_slope=0.1,
                                          INIT_VALUE=thresh),
                             env = saga_env)
   
+  #Grab output channel raster and vector from the output folder and return in terra format
   l<-list(stream_rasters=terra::rast("channel_grid.sdat"),stream_vectors=terra::vect("channel_shape.gpkg"))
   
   return(l)
