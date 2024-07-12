@@ -65,11 +65,82 @@
     
     
 <p>Subsequent analysis steps of riverMapper require a channel network
-which is commonly derived from a digital elevation model. The packages
-has some functions which allow to access SAGA GIS to conduct channel
-network delineation.</p>
+which is commonly derived from a digital elevation model. riverMapper
+has a wrapper for SAGA GIS to conduct channel network extraction from a
+digital elevation model.</p>
+<p>To use SAGA GIS from within the riverMapper package, you need to
+install SAGA GIS first. You can either do this manually from <a href="https://sourceforge.net/projects/saga-gis/" class="external-link">sourceforge</a> or use
+the install_saga() function in riverMapper. The package has been
+designed to work with SAGA 9.0.1, later versions haven’t been checked
+but should probably work.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#library(riverMapper)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#library(riverMapper)</span></span>
+<span><span class="co">#install_saga()</span></span></code></pre></div>
+<p>Everything the function needs as input is a path to a digital
+elevation model stored in a common raster format such as Geotiff. The
+function consists of several steps:</p>
+<ol style="list-style-type: decimal">
+<li>Preprocessing of the DEM; This step is necessary in order to obtain
+a depressionfree elevation model needed by the SAGA tools. riverMapper
+offers two options:</li>
+</ol>
+<ul>
+<li>breaching: This tool removes depressions by breaching; it uses a
+least cost-distance approach to detect breach targets (i.e. the cell to
+which the algorithm will trench a connection path) and for determining
+the breach path. This tool is a SAGA implementation of the whitebox
+tools by Dr. John Lindsay.</li>
+<li>sink filling: This tool uses the algorithm of <a href="https://doi.org/10.1080/13658810500433453" class="external-link">Wang &amp; Liu,
+2006</a> to remove depressions from the DEM. This approach requires some
+caution when applied to global elevation datasets as it tends to heavily
+modify the topography what can cause artifacts in the channel network
+and issues in later analysis stages. Therefore, I generally recommend to
+avoid sink filling in large scale analysis.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Computation of a channel initiation grid: In order to derive the
+starting cells of channels, two options are provided:</li>
+</ol>
+<ul>
+<li>Flow accumulation</li>
+<li>Channel initiation threshold index (CIT): This index has been
+suggested by <a href="https://doi.org/10.1029/WR025i008p01907" class="external-link">Montgomery &amp;
+Dietrich, 1989</a> and <a href="https://doi.org/10.1029/93WR02463" class="external-link">Montgomery &amp;
+Foufoula-Georgiou, 1993</a> and is computed as CIT=SCA*tan(slope)^2
+(with SCA being the specific catchment area). It is based on the
+assumption, that channel iniitation is based on catchment area and local
+topography and can result in more realistic channel heads in the
+uphill.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Extraction of the channel network: Using the channel initiation grid
+as basis, this step computes the actual channels. Users can adjust the
+level of detail by two parameters.</li>
+</ol>
+<ul>
+<li>“threshold” defines the minimum flow accumulation or CIT to be used
+for channel initiation. Generally, the initiation threshold should be
+carefully adjusted to the scale of analysis to avoid too detailed
+channel networks while keeping the necessary level of detail.</li>
+<li>“min_seglength” allows to control the level of detail as well. If a
+channel is shorter than min_seglength, it will be removed from the
+channel network before returning it to the user.</li>
+</ul>
+<p>Actually, the entire channel extraction procedure can be run in three
+lines of code:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#library(riverMapper)</span></span>
+<span></span>
+<span><span class="co">#Set path to your DEM file</span></span>
+<span><span class="co">#dem&lt;-"Your_dem_file.tif"</span></span>
+<span></span>
+<span><span class="co">#Specfify the path to your SAGA; the function rsaga.env() from the RSAGA package allows </span></span>
+<span><span class="co"># to search for the path on your drive</span></span>
+<span><span class="co">#saga_path&lt;-rsaga.env()$path</span></span>
+<span></span>
+<span><span class="co">#Specify output directory</span></span>
+<span><span class="co">#out_dir&lt;-"out_folder"</span></span>
+<span><span class="co">#channels&lt;-channelExtraction(dem=dem, preprocess="breach",  initiation="cit", thresh=50000,out_dir=out_dir)</span></span></code></pre></div>
   </main>
 </div>
 
