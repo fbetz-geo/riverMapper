@@ -45,10 +45,10 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">channelExtraction</span><span class="op">(</span></span>
 <span>  <span class="va">dem</span>,</span>
 <span>  preprocess <span class="op">=</span> <span class="st">"breach"</span>,</span>
-<span>  <span class="va">processed_dem</span>,</span>
 <span>  min_slope <span class="op">=</span> <span class="fl">0.1</span>,</span>
 <span>  initiation <span class="op">=</span> <span class="st">"cit"</span>,</span>
 <span>  <span class="va">thresh</span>,</span>
+<span>  min_seglength <span class="op">=</span> <span class="fl">10</span>,</span>
 <span>  <span class="va">saga_path</span>,</span>
 <span>  out_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -68,10 +68,6 @@ can be "fill_sink" which is using the Wang and Liu sink filling algorithm or "br
 which is the SAGA implementation of breaching as in the Whitebox tools</p></dd>
 
 
-<dt id="arg-processed-dem">processed_dem<a class="anchor" aria-label="anchor" href="#arg-processed-dem"></a></dt>
-<dd><p>output file name of the processed dem; it will be written to out_dir</p></dd>
-
-
 <dt id="arg-min-slope">min_slope<a class="anchor" aria-label="anchor" href="#arg-min-slope"></a></dt>
 <dd><p>minimum slope to maintain when carrying out sink filling; default is 0.1</p></dd>
 
@@ -83,6 +79,10 @@ which is the SAGA implementation of breaching as in the Whitebox tools</p></dd>
 
 <dt id="arg-thresh">thresh<a class="anchor" aria-label="anchor" href="#arg-thresh"></a></dt>
 <dd><p>threshold used for channel initiation. Commonly, flow accumulation is used for this.</p></dd>
+
+
+<dt id="arg-min-seglength">min_seglength<a class="anchor" aria-label="anchor" href="#arg-min-seglength"></a></dt>
+<dd><p>length (in cells) which a channel segment needs to have at least to be returned</p></dd>
 
 
 <dt id="arg-saga-path">saga_path<a class="anchor" aria-label="anchor" href="#arg-saga-path"></a></dt>
