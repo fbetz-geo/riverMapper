@@ -12,8 +12,7 @@ channelExtraction(
   initiation = "cit",
   thresh,
   saga_path,
-  out_dir = tempdir(),
-  overwrite = FALSE
+  out_dir = tempdir()
 )
 }
 \arguments{
@@ -35,11 +34,9 @@ which is the SAGA implementation of breaching as in the Whitebox tools}
 \item{saga_path}{path where the SAGA installation is found (see RSAGA::rsaga.env() for details)}
 
 \item{out_dir}{directory where to store output files}
-
-\item{overwrite}{should already existing files be overwritten? Defaults to true and only applies to the pathDistance!}
 }
 \value{
-a raster and a vector dataset of the channel network
+a list with a raster (terra rast() format) and a vector (terra vect() format) dataset of the channel network
 }
 \description{
 This function provides a wrapper for two different approaches for channel network delineation from a digital elevation model

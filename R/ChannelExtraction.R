@@ -11,11 +11,10 @@
 #'@param thresh threshold used for channel initiation. Commonly, flow accumulation is used for this.
 #'@param saga_path path where the SAGA installation is found (see RSAGA::rsaga.env() for details)
 #'@param out_dir directory where to store output files
-#'@param overwrite should already existing files be overwritten? Defaults to true and only applies to the pathDistance!
 #'@author Florian Betz
-#'@return a raster and a vector dataset of the channel network
+#'@return a list with a raster (terra rast() format) and a vector (terra vect() format) dataset of the channel network 
 
-channelExtraction<-function(dem,preprocess="breach",processed_dem,min_slope=0.1,initiation="cit",thresh,saga_path,out_dir=tempdir(),overwrite=FALSE){
+channelExtraction<-function(dem,preprocess="breach",processed_dem,min_slope=0.1,initiation="cit",thresh,saga_path,out_dir=tempdir()){
   
   #Set SAGA computation environment
   saga_env<-RSAGA::rsaga.env(saga_path)
@@ -69,7 +68,8 @@ channelExtraction<-function(dem,preprocess="breach",processed_dem,min_slope=0.1,
     message("Computing catchment area...")
     RSAGA::rsaga.geoprocessor(lib="ta_hydrology",module="Flow Accumulation (Top-Down)",
                               param = list(ELEVATION=dem,
-                                           FLOW="flow_acc.sgrd",                                           METHOD=4,
+                                           FLOW="flow_acc.sgrd",                                           
+                                           METHOD=4,
                                            LINEAR_DO=1,
                                            LINEAR_MIN=500,
                                            CONVERGENCE=5),
@@ -103,5 +103,10 @@ channelExtraction<-function(dem,preprocess="breach",processed_dem,min_slope=0.1,
                                          INIT_VALUE=thresh),
                             env = saga_env)
   
+  l<-list(stream_rasters=terra::rast("channel_grid.sdat"),stream_vectors=terra::vect("channel_shape.gpkg"))
   
+  return(l)
+  
+  #Reset the directory from out_dir to the original directory
+  setwd(dir)
 }
