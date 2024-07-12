@@ -50,8 +50,7 @@
 <span>  initiation <span class="op">=</span> <span class="st">"cit"</span>,</span>
 <span>  <span class="va">thresh</span>,</span>
 <span>  <span class="va">saga_path</span>,</span>
-<span>  out_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  out_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -93,14 +92,10 @@ which is the SAGA implementation of breaching as in the Whitebox tools</p></dd>
 <dt id="arg-out-dir">out_dir<a class="anchor" aria-label="anchor" href="#arg-out-dir"></a></dt>
 <dd><p>directory where to store output files</p></dd>
 
-
-<dt id="arg-overwrite">overwrite<a class="anchor" aria-label="anchor" href="#arg-overwrite"></a></dt>
-<dd><p>should already existing files be overwritten? Defaults to true and only applies to the pathDistance!</p></dd>
-
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>a raster and a vector dataset of the channel network</p>
+    <p>a list with a raster (terra rast() format) and a vector (terra vect() format) dataset of the channel network</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
