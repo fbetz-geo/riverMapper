@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Subsequent analysis steps of riverMapper require a channel network which is commonly derived from a digital elevation model. The packages has some functions which allow to access SAGA GIS to conduct channel network delineation.
+Subsequent analysis steps of riverMapper require a channel network which is commonly derived from a digital elevation model. riverMapper has a wrapper for SAGA GIS to conduct channel network extraction from a digital elevation model.
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -16,6 +16,42 @@ knitr::opts_chunk$set(
 )
 ```
 
+To use SAGA GIS from within the riverMapper package, you need to install SAGA GIS first. You can either do this manually from [sourceforge](https://sourceforge.net/projects/saga-gis/) or use the install_saga() function in riverMapper. The package has been designed to work with SAGA 9.0.1, later versions haven't been checked but should probably work.
+
 ```{r setup}
 #library(riverMapper)
+#install_saga()
+```
+
+Everything the function needs as input is a path to a digital elevation model stored in a common raster format such as Geotiff. The function consists of several steps:
+
+1)  Preprocessing of the DEM; This step is necessary in order to obtain a depressionfree elevation model needed by the SAGA tools. riverMapper offers two options:
+
+-   breaching: This tool removes depressions by breaching; it uses a least cost-distance approach to detect breach targets (i.e. the cell to which the algorithm will trench a connection path) and for determining the breach path. This tool is a SAGA implementation of the whitebox tools by Dr. John Lindsay.
+-   sink filling: This tool uses the algorithm of [Wang & Liu, 2006](https://doi.org/10.1080/13658810500433453) to remove depressions from the DEM. This approach requires some caution when applied to global elevation datasets as it tends to heavily modify the topography what can cause artifacts in the channel network and issues in later analysis stages. Therefore, I generally recommend to avoid sink filling in large scale analysis.
+
+2)  Computation of a channel initiation grid: In order to derive the starting cells of channels, two options are provided:
+
+-   Flow accumulation
+-   Channel initiation threshold index (CIT): This index has been suggested by [Montgomery & Dietrich, 1989](https://doi.org/10.1029/WR025i008p01907) and [Montgomery & Foufoula-Georgiou, 1993](https://doi.org/10.1029/93WR02463) and is computed as CIT=SCA\*tan(slope)\^2 (with SCA being the specific catchment area). It is based on the assumption, that channel iniitation is based on catchment area and local topography and can result in more realistic channel heads in the uphill.
+
+3)  Extraction of the channel network: Using the channel initiation grid as basis, this step computes the actual channels. Users can adjust the level of detail by two parameters.
+
+-   "threshold" defines the minimum flow accumulation or CIT to be used for channel initiation. Generally, the initiation threshold should be carefully adjusted to the scale of analysis to avoid too detailed channel networks while keeping the necessary level of detail.
+-   "min_seglength" allows to control the level of detail as well. If a channel is shorter than min_seglength, it will be removed from the channel network before returning it to the user.
+
+Actually, the entire channel extraction procedure can be run in three lines of code:
+```{r setup}
+#library(riverMapper)
+
+#Set path to your DEM file
+#dem<-"Your_dem_file.tif"
+
+#Specfify the path to your SAGA; the function rsaga.env() from the RSAGA package allows 
+# to search for the path on your drive
+#saga_path<-rsaga.env()$path
+
+#Specify output directory
+#out_dir<-"out_folder"
+#channels<-channelExtraction(dem=dem, preprocess="breach",  initiation="cit", thresh=50000,out_dir=out_dir)
 ```
