@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 To use SAGA GIS from within the riverMapper package, you need to install SAGA GIS first. You can either do this manually from [sourceforge](https://sourceforge.net/projects/saga-gis/) or use the install_saga() function in riverMapper. The package has been designed to work with SAGA 9.0.1, later versions haven't been checked but should probably work.
 
-```{r setup}
+```{r setup, include=TRUE}
 #library(riverMapper)
 #install_saga()
 ```
@@ -41,7 +41,8 @@ Everything the function needs as input is a path to a digital elevation model st
 -   "min_seglength" allows to control the level of detail as well. If a channel is shorter than min_seglength, it will be removed from the channel network before returning it to the user.
 
 Actually, the entire channel extraction procedure can be run in three lines of code:
-```{r setup}
+
+```{r, include=TRUE}
 #library(riverMapper)
 
 #Set path to your DEM file
