@@ -18,7 +18,18 @@ centerline<-function(mask,smooth, distance=100){
   #Convert the polygon to line
   outline<-sf::st_boundary(poly_simple)
   
-  #Densify the outline
-  outline_dense<-riverMapper::densify_sf(outline, distance=distance)
+  #Split outline
+  
+  
+  #Create points along line
+  
+  
+  #Create Voronoi polygons from the points
+  
+  
+  #Merge Thiessen Polygons and extract centerline
+  
+  
+  return()
   
 }
