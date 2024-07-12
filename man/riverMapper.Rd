@@ -2,6 +2,7 @@
 % Please edit documentation in R/riverMapper.R
 \docType{package}
 \name{riverMapper}
+\alias{riverMapper-package}
 \alias{riverMapper}
 \title{riverMapper}
 \description{
@@ -14,6 +15,13 @@ R-Package for River Corridor Mapping
 }
 \references{
 Betz, F., Lauermann, M., Cyffka, B. (2020): Open source riverscapes:
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://fbetz-geo.github.io/riverMapper/}
+}
+
 }
 \author{
 Florian Betz
