@@ -7,6 +7,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+Subsequent analysis steps of riverMapper require a channel network which is commonly derived from a digital elevation model. The packages has some functions which allow to access SAGA GIS to conduct channel network delineation.
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
