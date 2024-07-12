@@ -4,17 +4,17 @@
 #'@param preprocess option to use for preprocessing the DEM in order to create a depressionless elevation model      
 #'                  can be "fill_sink" which is using the Wang and Liu sink filling algorithm or "breach" 
 #'                  which is the SAGA implementation of breaching as in the Whitebox tools
-#'@param processed_dem output file name of the processed dem; it will be written to out_dir
 #'@param min_slope minimum slope to maintain when carrying out sink filling; default is 0.1
 #'@param initiation method for channel initiation, either "flow_acc" using flow accumulation or 
 #'                  "cit" using the channel initiation index 
 #'@param thresh threshold used for channel initiation. Commonly, flow accumulation is used for this.
+#'@param min_seglength length (in cells) which a channel segment needs to have at least to be returned
 #'@param saga_path path where the SAGA installation is found (see RSAGA::rsaga.env() for details)
 #'@param out_dir directory where to store output files
 #'@author Florian Betz
 #'@return a list with a raster (terra rast() format) and a vector (terra vect() format) dataset of the channel network 
 
-channelExtraction<-function(dem,preprocess="breach",processed_dem,min_slope=0.1,initiation="cit",thresh,saga_path,out_dir=tempdir()){
+channelExtraction<-function(dem,preprocess="breach",min_slope=0.1,initiation="cit",thresh,min_seglength=10, saga_path,out_dir=tempdir()){
   
   #Set SAGA computation environment
   saga_env<-RSAGA::rsaga.env(saga_path)
@@ -31,7 +31,7 @@ channelExtraction<-function(dem,preprocess="breach",processed_dem,min_slope=0.1,
     
     RSAGA::rsaga.geoprocessor(lib="ta_preprocessor",module="Fill Sinks XXL (Wang & Liu)",
                               param=list(ELEV=dem,
-                                         FILLED=processed_dem,
+                                         FILLED="dem_preprocessed.sgrd",
                                          MINSLOPE=min_slope),
                               env = saga_env)
     
@@ -100,7 +100,8 @@ channelExtraction<-function(dem,preprocess="breach",processed_dem,min_slope=0.1,
                                          SHAPES="channel_shape.gpkg",
                                          INIT_GRID="initiation_grid.sgrd",
                                          INIT_METHOD=2,
-                                         INIT_VALUE=thresh),
+                                         INIT_VALUE=thresh,
+                                         MINLEN=min_seglength),
                             env = saga_env)
   
   #Grab output channel raster and vector from the output folder and return in terra format

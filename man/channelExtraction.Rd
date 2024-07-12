@@ -7,10 +7,10 @@
 channelExtraction(
   dem,
   preprocess = "breach",
-  processed_dem,
   min_slope = 0.1,
   initiation = "cit",
   thresh,
+  min_seglength = 10,
   saga_path,
   out_dir = tempdir()
 )
@@ -22,14 +22,14 @@ channelExtraction(
 can be "fill_sink" which is using the Wang and Liu sink filling algorithm or "breach"
 which is the SAGA implementation of breaching as in the Whitebox tools}
 
-\item{processed_dem}{output file name of the processed dem; it will be written to out_dir}
-
 \item{min_slope}{minimum slope to maintain when carrying out sink filling; default is 0.1}
 
 \item{initiation}{method for channel initiation, either "flow_acc" using flow accumulation or
 "cit" using the channel initiation index}
 
 \item{thresh}{threshold used for channel initiation. Commonly, flow accumulation is used for this.}
+
+\item{min_seglength}{length (in cells) which a channel segment needs to have at least to be returned}
 
 \item{saga_path}{path where the SAGA installation is found (see RSAGA::rsaga.env() for details)}
 
