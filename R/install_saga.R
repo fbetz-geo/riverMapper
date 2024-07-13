@@ -4,6 +4,7 @@
 #' @param install_folder directory, where SAGA will be living. This is not necessarily C:/Program Files
 #' @author Florian Betz
 #' @return This function doesn't return any object
+#' @export install_saga
 #' 
 
 install_saga<-function(url="https://sourceforge.net/projects/saga-gis/files/SAGA%20-%209/SAGA%20-%209.0.1/saga-9.0.1_x64.zip/download",

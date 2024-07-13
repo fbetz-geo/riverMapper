@@ -9,7 +9,7 @@ channelExtraction(
   preprocess = "breach",
   min_slope = 0.1,
   initiation = "cit",
-  thresh,
+  threshold,
   min_seglength = 10,
   saga_path,
   out_dir = tempdir()
@@ -27,7 +27,7 @@ which is the SAGA implementation of breaching as in the Whitebox tools}
 \item{initiation}{method for channel initiation, either "flow_acc" using flow accumulation or
 "cit" using the channel initiation index}
 
-\item{thresh}{threshold used for channel initiation. Commonly, flow accumulation is used for this.}
+\item{threshold}{threshold used for channel initiation. Commonly, flow accumulation is used for this.}
 
 \item{min_seglength}{length (in cells) which a channel segment needs to have at least to be returned}
 

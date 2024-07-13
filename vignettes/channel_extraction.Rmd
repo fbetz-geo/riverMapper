@@ -40,7 +40,7 @@ Everything the function needs as input is a path to a digital elevation model st
 -   "threshold" defines the minimum flow accumulation or CIT to be used for channel initiation. Generally, the initiation threshold should be carefully adjusted to the scale of analysis to avoid too detailed channel networks while keeping the necessary level of detail.
 -   "min_seglength" allows to control the level of detail as well. If a channel is shorter than min_seglength, it will be removed from the channel network before returning it to the user.
 
-Actually, the entire channel extraction procedure can be run in three lines of code:
+Actually, the entire channel extraction procedure can be run in four lines of code:
 
 ```{r, include=TRUE}
 #library(riverMapper)

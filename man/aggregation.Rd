@@ -4,17 +4,25 @@
 \alias{aggregation}
 \title{Aggregation of the disaggregated units to uniform reaches using statistical methods}
 \usage{
-aggregation(river_df, method = "bcp", thresh)
+aggregation(river_df, method = "pettitt", variable, alpha = 0.05)
 }
 \arguments{
 \item{river_df}{data.frame with the river corridor attributes on the disaggregated level.}
 
-\item{method}{can be one of the following: pettitt for the univariate pettitt test, cluster for clustering or
-bcp for Bayesian changepoint estimation; default is "bcp"}
+\item{method}{can be one of the following: pettitt for the univariate pettitt test}
 
-\item{thresh}{threshold for the changepoint probability to be used by the bcp method}
+\item{variable}{variable from river_df to conduct the univariate pettitt segmentation}
+
+\item{alpha}{significance level of the pettitt test used to decide whether there is still
+a significant changepoint in a segment and segmentation should be continued}
+}
+\value{
+a new data.frame including all column from river_df with an additional column with index values for each segment
 }
 \description{
 This function provides various methods to aggregate the disaggregated river corridor into homogeneous reaches.
 It provides the univariate Pettitt test, a multivariate Bayesian method as well as a multivariate clustering method
+}
+\author{
+Florian Betz
 }

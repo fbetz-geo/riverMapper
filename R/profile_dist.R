@@ -6,6 +6,7 @@
 #'@param maxDist maximum distance (in meter) between two consecutive vertices when densifying the vertices of the line. 
 #'Default is 10 m.In general, maxDist should be in a similar range as the resolution of the underlying elevation data. 
 #'@author Florian Betz
+#'@export profile_distance
 #'
 profile_distance<-function(x, maxDist=10){
 
