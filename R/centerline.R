@@ -5,6 +5,7 @@
 #' @param distance Interval for inserting new vertices to the outline; see also densify_sf; default is 100, assuming that the data is in projected coordinate system with the units being meters.
 #' @author Florian Betz
 #' @return a list with 1) the centerline as sf line object and 2) the smoothed polygon as sf object
+#' @export centerline
 #' 
 
 centerline<-function(mask,smooth, distance=100){

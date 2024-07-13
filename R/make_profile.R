@@ -7,6 +7,7 @@
 #' @param plot If TRUE, a line plot of the profile will be returned
 #' @author Florian Betz
 #' @return a data.frame with the coordinates, the profile distance and the raster value
+#' @export make_profile
 #' 
 
 make_profile<-function(channel_line, rast_file,plot=TRUE){

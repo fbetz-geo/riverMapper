@@ -13,6 +13,7 @@
 #' @details Vertical Distance, and horizontal distance are currently computed using SAGA GIS. The computation is efficient, but not memory safe,    
 #' #' i.e. the entire DEM has to fit in RAM. Thus, it is recommended to watch memory use while computing these indices. 
 #' @return spatRaster with the morphometric indices as layers
+#' @export computeIndices
 #' 
 
 computeIndices<-function(dem,channels,saga_path, index,out_dir=tempdir(),overwrite=FALSE){

@@ -5,6 +5,7 @@
 #' @author Florian Betz
 #' @references Betz, F., Lauermann, M., Cyffka, B. (2018):
 #' @return spatRaster of a value range from 0-1 where 1 is fully connected to the channel and 0 is not connected at all.
+#' @export fuzzy_overlay
 #' 
 
 fuzzy_overlay<-function(x,mode="AND"){

@@ -8,6 +8,7 @@
 #' @author Florian Betz
 #' @references Betz, F., Lauermann, M., Cyffka, B. (2018): Delineating 
 #' @return spatRaster containing the membership raster for the specific index
+#' @export computeMembership
 #' 
 
 computeMembership<-function(index, x_cal_min,x_cal_max, type="linear"){
