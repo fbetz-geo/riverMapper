@@ -3,7 +3,7 @@
 #'    vegetation attributes of river corridor. The package is specifically tailored to the
 #'    needs of data-scarce environments and the use of globally available (satellite) data.
 #' @name riverMapper
-#' @docType package
+#' @docType _PACKAGE
 #' @title riverMapper
 #' @author Florian Betz
 #' @references Betz, F., Lauermann, M., Cyffka, B. (2020): Open source riverscapes: 
