@@ -7,9 +7,11 @@
 #' @title riverMapper
 #' @author Florian Betz
 #' @references Betz, F., Lauermann, M., Cyffka, B. (2020): Open source riverscapes: 
+# Analyzing the corridor of the Naryn River based on open access data. Remote Sensing 12(16): 2533. https://doi.org/10.3390/rs12162533
 #' @import terra
 #' @import RSAGA
 #' @import sf
 #' @import magrittr
 #' @import utils
+#' @import trend
 NULL
