@@ -7,7 +7,7 @@
 channelExtraction(
   dem,
   preprocess = "breach",
-  min_slope = 0.1,
+  min_slope = 1e-04,
   initiation = "cit",
   threshold,
   min_seglength = 10,
