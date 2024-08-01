@@ -14,4 +14,5 @@
 #' @import magrittr
 #' @import utils
 #' @import trend
+#' @import rgrass
 NULL
