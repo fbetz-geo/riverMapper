@@ -7,7 +7,7 @@
 #' @export install_saga
 #' 
 
-install_saga<-function(url="https://sourceforge.net/projects/saga-gis/files/SAGA%20-%209/SAGA%20-%209.0.1/saga-9.0.1_x64.zip/download",
+install_saga<-function(url="https://sourceforge.net/projects/saga-gis/files/SAGA%20-%208/SAGA%20-%208.4.1/saga-8.4.1_x64.zip/download",
                        install_folder="C:/SAGA"){
   
   #Checking for the operating system
@@ -16,11 +16,11 @@ install_saga<-function(url="https://sourceforge.net/projects/saga-gis/files/SAGA
   if (os!="Windows") {
     stop("Currently, only Windows is supported for this function. 
          See the SAGA website (https://saga-gis.sourceforge.io/) for more information how 
-         to install SAGA GIS on your computer")
+         to install SAGA GIS on your computer")}
     
     
     #Download the zipfile with SAGA files
-    download_path<-paste0(install_folder,"saga.zip",sep="/")
+    download_path<-paste(install_folder,"saga.zip",sep="/")
     
     #Increase timeout time to ensure complete download, 10 minutes should be fine even for slow connections
     options(timeout=600)
@@ -31,7 +31,8 @@ install_saga<-function(url="https://sourceforge.net/projects/saga-gis/files/SAGA
     message("Extracting SAGA files")
     utils::unzip(zipfile = download_path,exdir = install_folder)
     
-  }
+    message(paste0("SAGA successfully extracted to ", install_folder))
+            
   
   #Remove zip-file
   unlink(download_path)

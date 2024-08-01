@@ -6,7 +6,7 @@
 \usage{
 install_saga(
   url =
-    "https://sourceforge.net/projects/saga-gis/files/SAGA\%20-\%209/SAGA\%20-\%209.0.1/saga-9.0.1_x64.zip/download",
+    "https://sourceforge.net/projects/saga-gis/files/SAGA\%20-\%208/SAGA\%20-\%208.4.1/saga-8.4.1_x64.zip/download",
   install_folder = "C:/SAGA"
 )
 }
