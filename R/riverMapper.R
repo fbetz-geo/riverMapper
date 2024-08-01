@@ -15,4 +15,5 @@
 #' @import utils
 #' @import trend
 #' @import rgrass
+#' @import lwgeom
 NULL
