@@ -43,9 +43,9 @@ channelExtraction<-function(dem,preprocess="breach",min_slope=0.0001,initiation=
   if (preprocess=="breach") {
     message("Preprocessing: breaching depressions...")
     
-    RSAGA::rsaga.geoprocessor(lib="ta_preprocessor", module="Breach Depressions",
+    RSAGA::rsaga.geoprocessor(lib="ta_preprocessor", module=7,
                               param = list(DEM=dem,
-                                           NOSINKS=processed_dem),
+                                           NOSINKS="processed_dem"),
                               env = saga_env)
     
   }
@@ -56,7 +56,8 @@ channelExtraction<-function(dem,preprocess="breach",min_slope=0.0001,initiation=
     
     RSAGA::rsaga.geoprocessor(lib="ta_hydrology",module="Flow Accumulation (Top-Down)",
                               param = list(ELEVATION=dem,
-                                           FLOW="initiation_grid.sgrd",                                           METHOD=4,
+                                           FLOW="initiation_grid.sgrd",                                           
+                                           METHOD=4,
                                            LINEAR_DO=1,
                                            LINEAR_MIN=500,
                                            CONVERGENCE=5),

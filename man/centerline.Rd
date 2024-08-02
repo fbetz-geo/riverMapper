@@ -4,10 +4,12 @@
 \alias{centerline}
 \title{creates a centerline from the raster based corridor mask}
 \usage{
-centerline(mask, smooth, distance = 100)
+centerline(mask, riverline, smooth = 500, distance = 100)
 }
 \arguments{
 \item{mask}{spatRaster of the binary river corridor mask where the river corridor is encoded with 1 and non-corridor is NA}
+
+\item{riverline}{sf object representing the river line}
 
 \item{smooth}{smoothing factor for converting the raster mask to polygon, a higher smooth parameter will result in higher degree of simplification of the polygon}
 

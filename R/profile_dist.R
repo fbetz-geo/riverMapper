@@ -11,12 +11,12 @@
 profile_distance<-function(x, maxDist=10){
 
   #Check for projected coordinates
-  if (sf::st_is_longlat()) {
+  if (sf::st_is_longlat(x)) {
     stop("profile_distance expects a projected coordinate system for computing distances. Please consider reprojecting")
   
   }
     
-  #Explode line
+  #Densify line vertices
   dist_line<-sf::st_segmentize(x,dfMaxLength = units::set_units(maxDist,m))
   
   #Convert to points as basis for distance calculation
@@ -24,7 +24,7 @@ profile_distance<-function(x, maxDist=10){
   
   #Compute distances
   dists<-sf::st_coordinates(dist_pts) %>% as.data.frame() %>% 
-    dplyr::mutate(dists=cumsum(0,sqrt(diff(coords[,"X"])^2 + diff(coords[,"Y"])^2)))
+    dplyr::mutate(dists=cumsum(c(0,sqrt(diff(X)^2 + diff(Y)^2))))
   
   return(dists)
   
