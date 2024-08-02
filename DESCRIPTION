@@ -21,7 +21,9 @@ Imports:
     sf,
     terra,
     trend,
-    utils
+    units,
+    utils,
+    units
 URL: https://fbetz-geo.github.io/riverMapper/
 Suggests: 
     knitr,
