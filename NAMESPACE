@@ -2,11 +2,11 @@
 
 export(aggregation)
 export(centerline)
-export(channelExtraction)
 export(computeIndices)
 export(computeMembership)
 export(extend_line)
 export(extract_channels_grass)
+export(extract_channels_saga)
 export(fuzzy_overlay)
 export(install_grass)
 export(install_saga)

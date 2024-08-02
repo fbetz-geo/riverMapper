@@ -13,7 +13,7 @@
 #'@param out_dir directory where to store output files
 #'@author Florian Betz
 #'@return a list with a raster (terra rast() format) and a vector (terra vect() format) dataset of the channel network 
-#'@export channelExtraction
+#'@export extract_channels_saga
 #'
 
 extract_channels_saga<-function(dem,preprocess="breach",min_slope=0.0001,initiation="cit",threshold,min_seglength=10, saga_path,out_dir=tempdir()){
