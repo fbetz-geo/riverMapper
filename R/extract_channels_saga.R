@@ -16,7 +16,8 @@
 #'@export extract_channels_saga
 #'
 
-extract_channels_saga<-function(dem,preprocess="breach",min_slope=0.0001,initiation="cit",threshold,min_seglength=10, saga_path,out_dir=tempdir()){
+extract_channels_saga<-function(dem,preprocess="breach",min_slope=0.0001,initiation="cit",
+                                threshold,min_seglength=10, saga_path,out_dir=tempdir()){
   
   #Set SAGA computation environment
   saga_env<-RSAGA::rsaga.env(saga_path)

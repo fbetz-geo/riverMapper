@@ -6,6 +6,7 @@
 \usage{
 extract_channels_grass(
   dem,
+  preprocess_dem = FALSE,
   grass_path,
   grass_db,
   basin_threshold,
@@ -21,6 +22,9 @@ extract_channels_grass(
 }
 \arguments{
 \item{dem}{Path to a digital elevation model stored in a common raster format or terra SpatRaster}
+
+\item{preprocess_dem}{should the DEM be hydrologically conditioned before analysis? If TRUE, a minimum impact
+DEM treatment using the procedure of Lindsay and Creed (2005) is carried out.}
 
 \item{grass_path}{path where the GRASS installation is found (see rgrass::initGRASS for details)}
 
@@ -57,6 +61,10 @@ a list with a raster (terra rast() format) and a vector (sf() format) dataset of
 }
 \description{
 This function provides a wrapper for two different approaches for channel network delineation from a digital elevation model
+}
+\references{
+Lindsay, J. B., and Creed, I. F. 2005. Removal of artifact depressions from digital elevation models: towards a minimum impact approach.
+Hydrological Processes 19, 3113-3126. DOI: 10.1002/hyp.5835
 }
 \author{
 Florian Betz

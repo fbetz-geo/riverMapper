@@ -1,6 +1,8 @@
 #'Extracting a channel network from a digital elevation network using GRASS GIS
 #'@description This function provides a wrapper for two different approaches for channel network delineation from a digital elevation model
 #'@param dem Path to a digital elevation model stored in a common raster format or terra SpatRaster
+#'@param preprocess_dem should the DEM be hydrologically conditioned before analysis? If TRUE, a minimum impact
+#' DEM treatment using the procedure of Lindsay and Creed (2005) is carried out.
 #'@param threshold threshold used for channel initiation. Commonly, flow accumulation is used for this.
 #'@param min_seglength length (in cells) which a channel segment needs to have at least to be returned
 #'@param grass_path path where the GRASS installation is found (see rgrass::initGRASS for details)
@@ -19,11 +21,13 @@
 #'@param memory maximum RAM to use for disk swap computation, default is 300
 #'@param remove logical; if TRUE, the temporary GRASS database will be removed when quitting the R session or unloading rgrass
 #'@author Florian Betz
+#'@references Lindsay, J. B., and Creed, I. F. 2005. Removal of artifact depressions from digital elevation models: towards a minimum impact approach. 
+#'Hydrological Processes 19, 3113-3126. DOI: 10.1002/hyp.5835 
 #'@return a list with a raster (terra rast() format) and a vector (sf() format) dataset of the channel network 
 #'@export extract_channels_grass
 #'
 
-extract_channels_grass<-function(dem,grass_path,grass_db,basin_threshold, channel_threshold=10000,
+extract_channels_grass<-function(dem,preprocess_dem=FALSE, grass_path,grass_db,basin_threshold, channel_threshold=10000,
                                  montgomery=0, mfd_threshold=0, compute_orders=TRUE,stream_orders=c("hack","strahler"),
                                  disk_swap=FALSE, memory=300,remove=TRUE){
   
@@ -43,14 +47,39 @@ extract_channels_grass<-function(dem,grass_path,grass_db,basin_threshold, channe
   #Read the DEM to the GRASS database
   rgrass::write_RAST(dem,"dem",flags = "overwrite")
   
+  
+  #Preprocess DEM if required
+  if (preprocess_dem) {
+    #check if r.stream.orders addon is installed
+    addons<-rgrass::execGRASS("g.extension",flags="a",intern = TRUE)
+    if (!"r.hydrodem" %in% addons) {
+      message("r.hydrodem addon is not installed. Installing it with g.extension")
+      
+      #Install r.stream.order addon if not found
+      rgrass::execGRASS("g.extension",extension="r.hydrodem",operation="add")}
+    
+    rgrass::execGRASS("r.hydrodem",parameters = list(input="dem",
+                                                     output="dem_hydrodem",
+                                                     memory=memory))
+    #Set the name of the DEM to use in further computation, here the preprocessed DEM
+    dem_file="dem_hydrodem"
+    
+  }else{
+    
+    #Or set to the original DEM if preprocessing was not requested
+    dem_file="dem"
+  }
+  
+  
   #Compute flow accumulation and drainage direction using r.watershed
   
   #Set flag if disk swap computation is requested
   w_flags<-c()
-    if (disk_swap) {w_flags<-c(flags,"m")}
+    if (disk_swap) {
+      w_flags<-c(flags,"m")}
   
   #execute the GRASS module
-  rgrass::execGRASS("r.watershed", parameters = list(elevation="dem",
+  rgrass::execGRASS("r.watershed", parameters = list(elevation=dem_file,
                                                      threshold=basin_treshold,
                                                      accumulation="accumulation",
                                                      drainage="drain_dir",
@@ -59,7 +88,7 @@ extract_channels_grass<-function(dem,grass_path,grass_db,basin_threshold, channe
   
   
   #Execute channel extraction using r.stream.extract
-  rgrass::execGRASS("r.stream.extract", parameters = list(elevation="dem",
+  rgrass::execGRASS("r.stream.extract", parameters = list(elevation=dem_file,
                                                           acumulation="accumulation",
                                                           threshold=channel_threshold,
                                                           mexp=montgomery,
@@ -77,10 +106,13 @@ extract_channels_grass<-function(dem,grass_path,grass_db,basin_threshold, channe
     if (!"r.stream.order" %in% addons) {
       message("r.stream.order addon is not installed. Installing it with g.extension")
       
-      #Install r.stream.order addon
+      #Install r.stream.order addon if not found
+      rgrass::execGRASS("g.extension",extension="r.stream.order",operation="add")}
+      
+      #Execute the module
       rgrass::execGRASS("r.stream.order",parameters = list(stream_rast="channels",
                                                            direction="draindir_extract",
-                                                           elevation="dem",
+                                                           elevation=dem_file,
                                                            accumulation="accumulations",
                                                            stream_vect="stream_orders",
                                                            hack="hack",
@@ -90,7 +122,6 @@ extract_channels_grass<-function(dem,grass_path,grass_db,basin_threshold, channe
                                                            topo="topo",
                                                            memory=memory))
       
-    }
   }
   
   #Get the results back from GRASS to the R session
