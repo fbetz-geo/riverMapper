@@ -44,6 +44,7 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">extract_channels_grass</span><span class="op">(</span></span>
 <span>  <span class="va">dem</span>,</span>
+<span>  preprocess_dem <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  <span class="va">grass_path</span>,</span>
 <span>  <span class="va">grass_db</span>,</span>
 <span>  <span class="va">basin_threshold</span>,</span>
@@ -64,6 +65,11 @@
 
 <dl><dt id="arg-dem">dem<a class="anchor" aria-label="anchor" href="#arg-dem"></a></dt>
 <dd><p>Path to a digital elevation model stored in a common raster format or terra SpatRaster</p></dd>
+
+
+<dt id="arg-preprocess-dem">preprocess_dem<a class="anchor" aria-label="anchor" href="#arg-preprocess-dem"></a></dt>
+<dd><p>should the DEM be hydrologically conditioned before analysis? If TRUE, a minimum impact
+DEM treatment using the procedure of Lindsay and Creed (2005) is carried out.</p></dd>
 
 
 <dt id="arg-grass-path">grass_path<a class="anchor" aria-label="anchor" href="#arg-grass-path"></a></dt>
@@ -125,6 +131,11 @@ is used consuming a maximum amount of RAM is specified in memory</p></dd>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>a list with a raster (terra rast() format) and a vector (sf() format) dataset of the channel network</p>
+    </div>
+    <div class="section level2">
+    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    <p>Lindsay, J. B., and Creed, I. F. 2005. Removal of artifact depressions from digital elevation models: towards a minimum impact approach.
+Hydrological Processes 19, 3113-3126. DOI: 10.1002/hyp.5835</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
