@@ -13,6 +13,7 @@ extract_channels_grass(
   channel_threshold = 10000,
   montgomery = 0,
   mfd_threshold = 0,
+  min_seglenth,
   compute_orders = TRUE,
   stream_orders = c("hack", "strahler"),
   disk_swap = FALSE,
@@ -51,8 +52,6 @@ is used consuming a maximum amount of RAM is specified in memory}
 \item{memory}{maximum RAM to use for disk swap computation, default is 300}
 
 \item{remove}{logical; if TRUE, the temporary GRASS database will be removed when quitting the R session or unloading rgrass}
-
-\item{threshold}{threshold used for channel initiation. Commonly, flow accumulation is used for this.}
 
 \item{min_seglength}{length (in cells) which a channel segment needs to have at least to be returned}
 }

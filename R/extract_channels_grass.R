@@ -3,8 +3,6 @@
 #'@param dem Path to a digital elevation model stored in a common raster format or terra SpatRaster
 #'@param preprocess_dem should the DEM be hydrologically conditioned before analysis? If TRUE, a minimum impact
 #' DEM treatment using the procedure of Lindsay and Creed (2005) is carried out.
-#'@param threshold threshold used for channel initiation. Commonly, flow accumulation is used for this.
-#'@param min_seglength length (in cells) which a channel segment needs to have at least to be returned
 #'@param grass_path path where the GRASS installation is found (see rgrass::initGRASS for details)
 #'@param grass_db directory where to create the GRASS database; if not provided, tempdir() is used instead
 #'@param basin_threshold integer; minimum size of exterior watershed basin (see the help of r.watershed for more details)
@@ -13,6 +11,7 @@
 #'@param montgomery exponent for adjusting flow accumulation to slope
 #'@param mfd_threshold flow accumulation threshold where to switch from multiple flow direction to single flow direction 
 #' for channel derivation; setting mfd_threshold to 0 (the default) disables multiple flow direction completely
+#'@param min_seglength length (in cells) which a channel segment needs to have at least to be returned
 #'@param compute_orders logical; if TRUE, commonly used stream orders will be computed using the r.stream.order addon of GRASS GIS
 #'@param stream_orders character vector of the stream orders to return in the stream raster output; 
 #'can be any strahler, horton, hack, shreve, topo; by GRASS GIS default, the stream vector output will automatically include all orders as attributes
@@ -28,7 +27,7 @@
 #'
 
 extract_channels_grass<-function(dem,preprocess_dem=FALSE, grass_path,grass_db,basin_threshold, channel_threshold=10000,
-                                 montgomery=0, mfd_threshold=0, compute_orders=TRUE,stream_orders=c("hack","strahler"),
+                                 montgomery=0, mfd_threshold=0, min_seglenth,compute_orders=TRUE,stream_orders=c("hack","strahler"),
                                  disk_swap=FALSE, memory=300,remove=TRUE){
   
   #check if dem is already terra spatRaster
@@ -93,6 +92,7 @@ extract_channels_grass<-function(dem,preprocess_dem=FALSE, grass_path,grass_db,b
                                                           threshold=channel_threshold,
                                                           mexp=montgomery,
                                                           d8cut=mfd_threshold,
+                                                          stream_length=min_seglength,
                                                           stream_raster="channels",
                                                           stream_vector="channels",
                                                           direction="draindir_extract"))

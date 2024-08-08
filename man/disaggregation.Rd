@@ -7,13 +7,13 @@
 disaggregation(c_line, mask, seg_length = 1000)
 }
 \arguments{
+\item{c_line}{sf object representing the centerline as derived from the centerline() function}
+
 \item{mask}{spatRaster of the binary river corridor mask where the river corridor is encoded with 1 and non-corridor is NA;
 alternatively, mask can also be a sf object with a polygon representing the river corridor}
 
 \item{seg_length}{length of the desired river segments; choosing the appropriate scale of analysis will depend very much
 on the resolution of the input data and the scope of the specific analysis; default is 1 km}
-
-\item{C_line}{sf object representing the centerline as derived from the centerline() function}
 }
 \value{
 a list with 1) the centerline as sf line object and 2) the smoothed polygon as sf object

@@ -1,7 +1,7 @@
 #' creates segments from the centerline for working further with the data
 #' @description The disaggregation function creates the disaggregated segments of the river corridor in a specified segment length; 
 #' from a conceptual perspective, these segments represent a longitudinal continuum along the river
-#' @param C_line sf object representing the centerline as derived from the centerline() function
+#' @param c_line sf object representing the centerline as derived from the centerline() function
 #' @param mask spatRaster of the binary river corridor mask where the river corridor is encoded with 1 and non-corridor is NA; 
 #' alternatively, mask can also be a sf object with a polygon representing the river corridor 
 #' @param seg_length length of the desired river segments; choosing the appropriate scale of analysis will depend very much 

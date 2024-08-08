@@ -7,9 +7,9 @@
 extend_line(riverline, d)
 }
 \arguments{
-\item{d}{the dance in map units to extend the line}
+\item{riverline}{sf object containing the line to be extended}
 
-\item{line}{sf object containing the line to be extended}
+\item{d}{the dance in map units to extend the line}
 }
 \value{
 an sf object containing the extended line

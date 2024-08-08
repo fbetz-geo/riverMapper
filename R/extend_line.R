@@ -1,7 +1,7 @@
 #'This is a helper function for constructing the centerline. Its intended for internal use only
 #'@description This function extends a line to both ends in the direction of the last line segment by a specified dance
 #'The function assumes the line to be in projected coordinates
-#'@param line sf object containing the line to be extended
+#'@param riverline sf object containing the line to be extended
 #'@param d the dance in map units to extend the line
 #'@author Florian Betz
 #'@return an sf object containing the extended line
