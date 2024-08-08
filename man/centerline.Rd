@@ -25,3 +25,6 @@ a list with 1) the centerline as sf line object and 2) the smoothed polygon as s
 \description{
 The centerline function derives the centerline of the river corridor mask
 }
+\author{
+Florian Betz
+}

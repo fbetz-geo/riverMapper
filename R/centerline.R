@@ -7,6 +7,7 @@
 #' on the resolution of the input data and the scope of the specific analysis; default is 1 km
 #' @param smooth_factor smoothing factor for converting the raster mask to polygon, a higher smooth parameter will result in higher degree of simplification of the polygon
 #' @param d length to extend the ends of the riverline in order to split the corridor outline; can be adjusted to avoid errors
+#' @author Florian Betz
 #' @return a list with 1) the centerline as sf line object and 2) the smoothed polygon as sf object
 #' @export centerline
 #' 
