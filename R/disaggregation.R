@@ -8,7 +8,7 @@
 #' on the resolution of the input data and the scope of the specific analysis; default is 1 km
 #' @author Florian Betz
 #' @return a list with 1) the centerline as sf line object and 2) the smoothed polygon as sf object
-#' @export segmentation
+#' @export disaggregation
 #' 
 
 disaggregation<-function(c_line,mask,seg_length=1000){
