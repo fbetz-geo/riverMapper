@@ -4,18 +4,18 @@
 \alias{extend_line}
 \title{This is a helper function for constructing the centerline. Its intended for internal use only}
 \usage{
-extend_line(line, dist)
+extend_line(riverline, d)
 }
 \arguments{
-\item{line}{sf object containing the line to be extended}
+\item{d}{the dance in map units to extend the line}
 
-\item{dist}{the distance in map units to extend the line}
+\item{line}{sf object containing the line to be extended}
 }
 \value{
 an sf object containing the extended line
 }
 \description{
-This function extends a line to both ends in the direction of the last line segment by a specified distance
+This function extends a line to both ends in the direction of the last line segment by a specified dance
 The function assumes the line to be in projected coordinates
 }
 \author{
