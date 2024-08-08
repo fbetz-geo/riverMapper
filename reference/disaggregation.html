@@ -52,7 +52,11 @@ from a conceptual perspective, these segments represent a longitudinal continuum
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-mask">mask<a class="anchor" aria-label="anchor" href="#arg-mask"></a></dt>
+<dl><dt id="arg-c-line">c_line<a class="anchor" aria-label="anchor" href="#arg-c-line"></a></dt>
+<dd><p>sf object representing the centerline as derived from the centerline() function</p></dd>
+
+
+<dt id="arg-mask">mask<a class="anchor" aria-label="anchor" href="#arg-mask"></a></dt>
 <dd><p>spatRaster of the binary river corridor mask where the river corridor is encoded with 1 and non-corridor is NA;
 alternatively, mask can also be a sf object with a polygon representing the river corridor</p></dd>
 
@@ -60,10 +64,6 @@ alternatively, mask can also be a sf object with a polygon representing the rive
 <dt id="arg-seg-length">seg_length<a class="anchor" aria-label="anchor" href="#arg-seg-length"></a></dt>
 <dd><p>length of the desired river segments; choosing the appropriate scale of analysis will depend very much
 on the resolution of the input data and the scope of the specific analysis; default is 1 km</p></dd>
-
-
-<dt id="arg-c-line">C_line<a class="anchor" aria-label="anchor" href="#arg-c-line"></a></dt>
-<dd><p>sf object representing the centerline as derived from the centerline() function</p></dd>
 
 </dl></div>
     <div class="section level2">

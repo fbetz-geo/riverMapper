@@ -51,6 +51,7 @@
 <span>  channel_threshold <span class="op">=</span> <span class="fl">10000</span>,</span>
 <span>  montgomery <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  mfd_threshold <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  <span class="va">min_seglenth</span>,</span>
 <span>  compute_orders <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  stream_orders <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hack"</span>, <span class="st">"strahler"</span><span class="op">)</span>,</span>
 <span>  disk_swap <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -118,10 +119,6 @@ is used consuming a maximum amount of RAM is specified in memory</p></dd>
 
 <dt id="arg-remove">remove<a class="anchor" aria-label="anchor" href="#arg-remove"></a></dt>
 <dd><p>logical; if TRUE, the temporary GRASS database will be removed when quitting the R session or unloading rgrass</p></dd>
-
-
-<dt id="arg-threshold">threshold<a class="anchor" aria-label="anchor" href="#arg-threshold"></a></dt>
-<dd><p>threshold used for channel initiation. Commonly, flow accumulation is used for this.</p></dd>
 
 
 <dt id="arg-min-seglength">min_seglength<a class="anchor" aria-label="anchor" href="#arg-min-seglength"></a></dt>
