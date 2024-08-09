@@ -23,7 +23,9 @@ Function to create linear fuzzy membership functions to delineate river corridor
 linear or inverse linear (see details).
 }
 \references{
-Betz, F., Lauermann, M., Cyffka, B. (2018): Delineating
+Betz, F., Lauermann, M., Cyffka, B. (2018): Delineation of the riparian zone in data-scarce regions
+using fuzzy membership functions: An evaluation based on the case of the Naryn River in Kyrgyzstan. Geomorphology.
+https://doi.org/10.1016/j.geomorph.2018.01.024
 }
 \author{
 Florian Betz

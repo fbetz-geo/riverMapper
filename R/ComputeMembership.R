@@ -6,7 +6,9 @@
 #' @param x_cal_max numeric; upper bound of calibration range 
 #' @param type character; can be either "linear" or "inv_linear"
 #' @author Florian Betz
-#' @references Betz, F., Lauermann, M., Cyffka, B. (2018): Delineating 
+#' @references Betz, F., Lauermann, M., Cyffka, B. (2018): Delineation of the riparian zone in data-scarce regions
+#' using fuzzy membership functions: An evaluation based on the case of the Naryn River in Kyrgyzstan. Geomorphology.
+#' https://doi.org/10.1016/j.geomorph.2018.01.024
 #' @return spatRaster containing the membership raster for the specific index
 #' @export computeMembership
 #' 
