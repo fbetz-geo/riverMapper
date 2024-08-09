@@ -13,7 +13,7 @@ extract_channels_grass(
   channel_threshold = 10000,
   montgomery = 0,
   mfd_threshold = 0,
-  min_seglenth,
+  min_seglength,
   compute_orders = TRUE,
   stream_orders = c("hack", "strahler"),
   disk_swap = FALSE,
@@ -41,6 +41,8 @@ threshold method according to Montgomery and Foufoula-Georgiou (1993) is used in
 \item{mfd_threshold}{flow accumulation threshold where to switch from multiple flow direction to single flow direction
 for channel derivation; setting mfd_threshold to 0 (the default) disables multiple flow direction completely}
 
+\item{min_seglength}{length (in cells) which a channel segment needs to have at least to be returned}
+
 \item{compute_orders}{logical; if TRUE, commonly used stream orders will be computed using the r.stream.order addon of GRASS GIS}
 
 \item{stream_orders}{character vector of the stream orders to return in the stream raster output;
@@ -52,8 +54,6 @@ is used consuming a maximum amount of RAM is specified in memory}
 \item{memory}{maximum RAM to use for disk swap computation, default is 300}
 
 \item{remove}{logical; if TRUE, the temporary GRASS database will be removed when quitting the R session or unloading rgrass}
-
-\item{min_seglength}{length (in cells) which a channel segment needs to have at least to be returned}
 }
 \value{
 a list with a raster (terra rast() format) and a vector (sf() format) dataset of the channel network

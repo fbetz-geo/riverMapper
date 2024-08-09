@@ -17,4 +17,5 @@
 #' @import rgrass
 #' @import lwgeom
 #' @import units
+#' @import dplyr
 NULL

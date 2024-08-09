@@ -21,7 +21,7 @@ Imports:
     trend,
     units,
     utils,
-    units
+    dplyr
 URL: https://fbetz-geo.github.io/riverMapper/
 Suggests: 
     knitr,

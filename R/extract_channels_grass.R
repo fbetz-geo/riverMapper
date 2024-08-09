@@ -27,7 +27,7 @@
 #'
 
 extract_channels_grass<-function(dem,preprocess_dem=FALSE, grass_path,grass_db,basin_threshold, channel_threshold=10000,
-                                 montgomery=0, mfd_threshold=0, min_seglenth,compute_orders=TRUE,stream_orders=c("hack","strahler"),
+                                 montgomery=0, mfd_threshold=0, min_seglength,compute_orders=TRUE,stream_orders=c("hack","strahler"),
                                  disk_swap=FALSE, memory=300,remove=TRUE){
   
   #check if dem is already terra spatRaster
