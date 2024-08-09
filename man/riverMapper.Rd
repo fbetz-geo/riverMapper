@@ -13,7 +13,9 @@ needs of data-scarce environments and the use of globally available (satellite) 
 R-Package for River Corridor Mapping
 }
 \references{
-Betz, F., Lauermann, M., Cyffka, B. (2020): Open source riverscapes:
+\itemize{
+\item Betz, F., Lauermann, M., Cyffka, B. (2020): Open source riverscapes:
+}
 }
 \author{
 Florian Betz
