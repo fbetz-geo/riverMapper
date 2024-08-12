@@ -5,7 +5,9 @@
 #' @param index character; indices to be computed, can be "hdist" for horizontal distance, "vdist"   
 #' for vertical distance, "mrvbf" for multiresolution valleybottom flatness index, "TWI" for Wetness Index
 #' or "PathDist" for Path Distance
-#' @param saga_path path where the SAGA installation is found (see RSAGA::rsaga.env() for details)
+#' @param gis_backend which GIS software to use for computing the more complex terrain parameters; 
+#' currently only SAGA GIS is supported with GRASS GIS being available soon
+#' @param gis_path path where the SAGA installation is found (see RSAGA::rsaga.env() for details)
 #' @param out_dir directory where to store output files
 #' @param overwrite should already existing files be overwritten? Defaults to true and only applies to the pathDistance!
 #' @author Florian Betz
@@ -16,10 +18,10 @@
 #' @export computeIndices
 #' 
 
-computeIndices<-function(dem,channels,saga_path, index,out_dir=tempdir(),overwrite=FALSE){
+computeIndices<-function(dem,channels,gis_backend="saga", gis_path=c("vdist","PathDist","mrvbf"), index,out_dir=tempdir(),overwrite=FALSE){
   
   #Set SAGA computation environment
-  saga_env<-RSAGA::rsaga.env(saga_path)
+  saga_env<-RSAGA::rsaga.env(gis_path)
   
   #Temporary set working directory
   dir<-getwd()

@@ -7,7 +7,8 @@
 computeIndices(
   dem,
   channels,
-  saga_path,
+  gis_backend = "saga",
+  gis_path = c("vdist", "PathDist", "mrvbf"),
   index,
   out_dir = tempdir(),
   overwrite = FALSE
@@ -18,7 +19,10 @@ computeIndices(
 
 \item{channels}{path to raster of channel network delineated from digital elevation models}
 
-\item{saga_path}{path where the SAGA installation is found (see RSAGA::rsaga.env() for details)}
+\item{gis_backend}{which GIS software to use for computing the more complex terrain parameters;
+currently only SAGA GIS is supported with GRASS GIS being available soon}
+
+\item{gis_path}{path where the SAGA installation is found (see RSAGA::rsaga.env() for details)}
 
 \item{index}{character; indices to be computed, can be "hdist" for horizontal distance, "vdist"
 for vertical distance, "mrvbf" for multiresolution valleybottom flatness index, "TWI" for Wetness Index
