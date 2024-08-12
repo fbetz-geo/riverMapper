@@ -20,6 +20,9 @@
 
 computeIndices<-function(dem,channels,gis_backend="saga", gis_path=c("vdist","PathDist","mrvbf"), index,out_dir=tempdir(),overwrite=FALSE){
   
+  #Check for GIS backend
+  if (gis_backend=="saga") {
+    
   #Set SAGA computation environment
   saga_env<-RSAGA::rsaga.env(gis_path)
   
@@ -97,6 +100,7 @@ computeIndices<-function(dem,channels,gis_backend="saga", gis_path=c("vdist","Pa
     
     #Adding result to stack list for the final output
     stack_list[["mrvbf"]]<-rast("mrvbf.sdat")}
+  }
   
   #Stacking inputs
   message("Stacking outputs...")
