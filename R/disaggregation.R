@@ -25,7 +25,7 @@ disaggregation<-function(c_line,mask,seg_length=1000){
     sf::st_as_sf(coords=c("X","Y"),crs=crs(riverline)) %>% terra::vect()
   
   #Create Voronoi polygons from the points
-  segs<-terra::voronoi(pts,bnd=poly) %>% sf::st_as_sf() %>% dplyr::mutate(Seg_ID=dplyr::row_number())
+  segs<-terra::voronoi(pts,bnd=poly) %>% sf::st_as_sf() %>% dplyr::mutate(seg_id=dplyr::row_number())
   
   return(segs)
 } 
