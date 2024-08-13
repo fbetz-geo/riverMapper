@@ -46,8 +46,8 @@
 <span>  <span class="va">dem</span>,</span>
 <span>  <span class="va">channels</span>,</span>
 <span>  gis_backend <span class="op">=</span> <span class="st">"saga"</span>,</span>
-<span>  gis_path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"vdist"</span>, <span class="st">"PathDist"</span>, <span class="st">"mrvbf"</span><span class="op">)</span>,</span>
-<span>  <span class="va">index</span>,</span>
+<span>  <span class="va">gis_path</span>,</span>
+<span>  index <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"vdist"</span>, <span class="st">"pathDist"</span>, <span class="st">"mrvbf"</span><span class="op">)</span>,</span>
 <span>  out_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -76,7 +76,7 @@ currently only SAGA GIS is supported with GRASS GIS being available soon</p></dd
 
 <dt id="arg-index">index<a class="anchor" aria-label="anchor" href="#arg-index"></a></dt>
 <dd><p>character; indices to be computed, can be "hdist" for horizontal distance, "vdist"
-for vertical distance, "mrvbf" for multiresolution valleybottom flatness index, "TWI" for Wetness Index
+for vertical distance, "mrvbf" for multiresolution valleybottom flatness index, "TWI" for topographic Wetness Index
 or "PathDist" for Path Distance</p></dd>
 
 
