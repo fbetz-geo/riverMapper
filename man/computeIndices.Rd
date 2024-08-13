@@ -8,8 +8,8 @@ computeIndices(
   dem,
   channels,
   gis_backend = "saga",
-  gis_path = c("vdist", "PathDist", "mrvbf"),
-  index,
+  gis_path,
+  index = c("vdist", "pathDist", "mrvbf"),
   out_dir = tempdir(),
   overwrite = FALSE
 )
@@ -25,7 +25,7 @@ currently only SAGA GIS is supported with GRASS GIS being available soon}
 \item{gis_path}{path where the SAGA installation is found (see RSAGA::rsaga.env() for details)}
 
 \item{index}{character; indices to be computed, can be "hdist" for horizontal distance, "vdist"
-for vertical distance, "mrvbf" for multiresolution valleybottom flatness index, "TWI" for Wetness Index
+for vertical distance, "mrvbf" for multiresolution valleybottom flatness index, "TWI" for topographic Wetness Index
 or "PathDist" for Path Distance}
 
 \item{out_dir}{directory where to store output files}

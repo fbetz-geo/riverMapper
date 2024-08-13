@@ -3,7 +3,7 @@
 #' @param dem path to the digital elevation model
 #' @param channels path to raster of channel network delineated from digital elevation models
 #' @param index character; indices to be computed, can be "hdist" for horizontal distance, "vdist"   
-#' for vertical distance, "mrvbf" for multiresolution valleybottom flatness index, "TWI" for Wetness Index
+#' for vertical distance, "mrvbf" for multiresolution valleybottom flatness index, "TWI" for topographic Wetness Index
 #' or "PathDist" for Path Distance
 #' @param gis_backend which GIS software to use for computing the more complex terrain parameters; 
 #' currently only SAGA GIS is supported with GRASS GIS being available soon
@@ -18,7 +18,7 @@
 #' @export computeIndices
 #' 
 
-computeIndices<-function(dem,channels,gis_backend="saga", gis_path=c("vdist","PathDist","mrvbf"), index,out_dir=tempdir(),overwrite=FALSE){
+computeIndices<-function(dem,channels,gis_backend="saga", gis_path,index=c("vdist","pathDist","mrvbf"),out_dir=tempdir(),overwrite=FALSE){
   
   #Check for GIS backend
   if (gis_backend=="saga") {
@@ -34,7 +34,7 @@ computeIndices<-function(dem,channels,gis_backend="saga", gis_path=c("vdist","Pa
   stack_list<-list()
   
   #Compute vertical distance to channel network
-  if ("vist" %in% index) {
+  if ("vdist" %in% index) {
     message("Computing Vertical Distance to Channel Network...")
     RSAGA::rsaga.geoprocessor(lib = "ta_channels", module = "Vertical Distance to Channel Network",
                      param = list(ELEVATION = dem, 
@@ -102,7 +102,7 @@ computeIndices<-function(dem,channels,gis_backend="saga", gis_path=c("vdist","Pa
     stack_list[["mrvbf"]]<-rast("mrvbf.sdat")}
   }
   
-  #Stacking inputs
+  #Stacking inputs, from here code is not separated for the different GIS backends anymore
   message("Stacking outputs...")
   indices<-rast(stack_list)
   
