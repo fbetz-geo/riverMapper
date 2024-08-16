@@ -9,7 +9,16 @@
 #'
 
 
-extend_line <- function(riverline, d) {
+extend_line <- function(riverline, d,cs=crs(riverline)) {
+  
+  #Check, if coordinate system is project and throw error if it is not
+  if (sf::st_is_longlat(riverline)) {
+    stop("This function is working only with projected coordinates. Please consider reprojecting")
+    
+  }
+  
+  #Store coordinate system for grabbing it later
+  cs<-cs
   
   #Dissolve the riverline
   riverline<-sf::st_union(riverline) %>% sf::st_cast("LINESTRING")
@@ -30,10 +39,12 @@ extend_line <- function(riverline, d) {
   new_end <- end + (d * dir_end)
   
   # Combine the new points with the original riverline coordinates
-  new_coords <- rbind(new_start, sf::st_coordinates(riverline), new_end)
+  line1 <- rbind(new_start, start) %>% as.data.frame() %>% sf::st_as_sf(coords=c("X","Y"),crs=cs) %>% 
+    sf::st_union() %>% sf::st_cast("LINESTRING")
+  line2 <- rbind(new_end, end) %>% as.data.frame() %>% sf::st_as_sf(coords=c("X","Y"),crs=cs) %>% 
+    sf::st_union() %>% sf::st_cast("LINESTRING")
   
   # Create a new line with the extended coordinates
-  new_line<-new_coords %>% as.data.frame() %>% sf::st_as_sf(coords=c("X","Y"),crs=sf::st_crs(riverline)) %>% 
-    dplyr::summarize(do_union=FALSE) %>% sf::st_cast("LINESTRING")
+  new_line<-sf::st_union(line1,line2)
   return(new_line)
 }
