@@ -1,7 +1,7 @@
 #' Compute Membership based on Linear Functions
 #' @description Function to create linear fuzzy membership functions to delineate river corridor. The function can be either
 #' linear or inverse linear (see details). 
-#' @param index spat raster or path to raster file in any format readable by terra::rast()
+#' @param index SpatRaster or path to raster file in any format readable by terra::rast()
 #' @param x_cal_min numeric; lower bound of calibration range
 #' @param x_cal_max numeric; upper bound of calibration range 
 #' @param type character; can be either "linear" or "inv_linear"

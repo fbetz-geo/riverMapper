@@ -7,7 +7,7 @@
 computeMembership(index, x_cal_min, x_cal_max, type = "linear")
 }
 \arguments{
-\item{index}{spat raster or path to raster file in any format readable by terra::rast()}
+\item{index}{SpatRaster or path to raster file in any format readable by terra::rast()}
 
 \item{x_cal_min}{numeric; lower bound of calibration range}
 
