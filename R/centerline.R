@@ -20,7 +20,7 @@ centerline<-function(mask,riverline, seg_length=1000, smooth_factor=2500, d=5000
   
   #vectorizing the raster mask if given as spatRaster
   if (is(mask,"SpatRaster")) {
-    poly<-terra::as.polygons(mask) %>% sf::st_as_sf()
+    poly<-terra::as.polygons(mask) %>% terra::fillHoles() %>% simplifyGeom(tolerance=smooth_factor) %>% sf::st_as_sf()
   }else{
     poly<-mask
   }
