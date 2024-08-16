@@ -4,10 +4,15 @@
 \alias{profile_distance}
 \title{Computing distance along a channel}
 \usage{
-profile_distance(riverline, maxDist = 10)
+profile_distance(riverline, start = "highest", dem, maxDist = 10)
 }
 \arguments{
 \item{riverline}{sf object containing the channel line}
+
+\item{start}{where should the profile distance start? "Highest" will start compute the distances from source to mouth,
+"lowest" from mouth to source}
+
+\item{dem}{path to a digital elevation model stored in any common raster data format, this is required for determining start and end by elevation}
 
 \item{maxDist}{maximum distance (in meter) between two consecutive vertices when densifying the vertices of the line.
 Default is 10 m.In general, maxDist should be in a similar range as the resolution of the underlying elevation data.}

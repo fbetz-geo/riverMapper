@@ -4,7 +4,7 @@
 \alias{disaggregation}
 \title{creates segments from the centerline for working further with the data}
 \usage{
-disaggregation(c_line, mask, seg_length = 1000)
+disaggregation(c_line, mask, seg_length = 1000, start = "lowest", dem)
 }
 \arguments{
 \item{c_line}{sf object representing the centerline as derived from the centerline() function}
@@ -14,6 +14,11 @@ alternatively, mask can also be a sf object with a polygon representing the rive
 
 \item{seg_length}{length of the desired river segments; choosing the appropriate scale of analysis will depend very much
 on the resolution of the input data and the scope of the specific analysis; default is 1 km}
+
+\item{start}{where should the profile distance start? "Highest" will start compute the distances from source to mouth,
+"lowest" from mouth to source}
+
+\item{dem}{path to a digital elevation model stored in any common raster data format, this is required for determining start and end by elevation}
 }
 \value{
 a list with 1) the centerline as sf line object and 2) the smoothed polygon as sf object
