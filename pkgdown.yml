@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   channel_extraction: channel_extraction.html
   fuzzyDelineation: fuzzyDelineation.html
-last_built: 2024-08-13T10:08Z
+last_built: 2024-08-16T19:40Z
 urls:
   reference: https://fbetz-geo.github.io/riverMapper/reference
   article: https://fbetz-geo.github.io/riverMapper/articles
