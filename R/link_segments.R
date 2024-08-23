@@ -17,7 +17,7 @@ link_segments<-function(riverline,segs){
   seg_dists<-sf::st_join(dists,segs,left=TRUE) %>% dplyr::group_by(seg_id) %>% 
     summarize(seg_id=mean(seg_id),seg_dist=median(distances))
   
-  #Link back to the original flooplain segments
+  #Link back to the original floodplain segments
   seg_dist_polys<-dplyr::left_join(segs,seg_dists,by="seg_id")
   
   return(seg_dist_polys)

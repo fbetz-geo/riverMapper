@@ -4,7 +4,7 @@
 \alias{extend_line}
 \title{This is a helper function for constructing the centerline. Its intended for internal use only}
 \usage{
-extend_line(riverline, d, cs = crs(riverline))
+extend_line(riverline, d)
 }
 \arguments{
 \item{riverline}{sf object containing the line to be extended}

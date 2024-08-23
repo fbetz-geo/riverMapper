@@ -9,7 +9,7 @@
 #'
 
 
-extend_line <- function(riverline, d,cs=crs(riverline)) {
+extend_line <- function(riverline, d) {
   
   #Check, if coordinate system is project and throw error if it is not
   if (sf::st_is_longlat(riverline)) {
@@ -18,7 +18,7 @@ extend_line <- function(riverline, d,cs=crs(riverline)) {
   }
   
   #Store coordinate system for grabbing it later
-  cs<-cs
+  cs<-sf::st_crs(riverline)
   
   #Dissolve the riverline
   riverline<-sf::st_union(riverline) %>% sf::st_cast("LINESTRING")

@@ -11,12 +11,13 @@
 #' @return a new data.frame including all column from river_df with an additional column with index values for each segment
 #'@export aggregation
 
-aggregation<-function(river_df,method="pettitt", variable, alpha=0.05)
-{
+aggregation<-function(river_df,method="pettitt", variable, alpha=0.05){
 
   #Pettitt test (univariate changepoint method)
   if (method=="pettitt") {
     
+    data<-river_df[,variable]
+    cpts<-riverMapper::pettitt_test(data=data,alpha = alpha)
     
   }
 }

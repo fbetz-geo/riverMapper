@@ -18,6 +18,20 @@ centerline<-function(mask,riverline, seg_length=1000, smooth_factor=2500, d=5000
   #Remove all attributes from the riverline to avoid errors
   riverline<-sf::st_geometry(riverline) %>% sf::st_sf()
   
+  #Store coordinate system
+  c_rs=sf::st_crs(riverline)
+  
+  #Check if the centerline is only one feature
+  if (nrow(riverline)>1) {
+    riverline<-sf::st_union(riverline) %>% sf::st_sf()
+    
+  }
+  
+  #Convert centerline to sf LINESTRING if necessary
+  if(sf::st_geometry_type(riverline)=="MULTILINESTRING"){
+    riverline<-sf::st_line_merge(riverline)
+  }
+  
   #vectorizing the raster mask if given as spatRaster
   if (is(mask,"SpatRaster")) {
     poly<-terra::as.polygons(mask) %>% terra::fillHoles() %>% simplifyGeom(tolerance=smooth_factor) %>% sf::st_as_sf()
@@ -47,7 +61,7 @@ centerline<-function(mask,riverline, seg_length=1000, smooth_factor=2500, d=5000
   c_points<-sf::st_union(splits[l[1],],splits[l[2],]) %>% 
     
     #convert to points
-    st_coordinates() %>% as.data.frame() %>% sf::st_as_sf(coords=c("X","Y"),crs=crs(splits)) %>% 
+    st_coordinates() %>% as.data.frame() %>% sf::st_as_sf(coords=c("X","Y"),crs=c_rs) %>% 
     
     #Add ID column for distinguishing between the two sides of the river and drop columns arising from splitting
     dplyr::mutate(ID=1) %>% dplyr::select(-c(L1,L2))
@@ -55,7 +69,7 @@ centerline<-function(mask,riverline, seg_length=1000, smooth_factor=2500, d=5000
   r_points<-splits[l[3],] %>% 
     
   #Convert also to points
-    st_coordinates() %>% as.data.frame() %>% sf::st_as_sf(coords=c("X","Y"),crs=crs(splits)) %>% 
+    st_coordinates() %>% as.data.frame() %>% sf::st_as_sf(coords=c("X","Y"),crs=c_rs) %>% 
     
   #And add ID column and drop columns arising from splitting
     dplyr::mutate(ID=2) %>% dplyr::select(-L1)
@@ -72,7 +86,7 @@ centerline<-function(mask,riverline, seg_length=1000, smooth_factor=2500, d=5000
   voro_2<-terra::subset(voros,voros$ID==2) %>% terra::as.lines()
   
   #Merge Thiessen Polygons and extract centerline
-  centerline<-terra::intersect(voro_1,voro_2) %>% terra::crop(poly) %>% sf::st_as_sf() %>% dplyr::select(-c(ID,ID.1)) %>% st_simplify(dTolerance = smooth_factor)
+  centerline<-terra::intersect(voro_1,voro_2) %>% terra::intersect(terra::vect(poly)) %>% sf::st_as_sf() %>% dplyr::select(-c(ID,ID.1)) %>% st_simplify(dTolerance = smooth_factor)
   
   return(centerline)
   
