@@ -42,7 +42,14 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">centerline</span><span class="op">(</span><span class="va">mask</span>, <span class="va">riverline</span>, seg_length <span class="op">=</span> <span class="fl">1000</span>, smooth_factor <span class="op">=</span> <span class="fl">2500</span>, d <span class="op">=</span> <span class="fl">5000</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">centerline</span><span class="op">(</span></span>
+<span>  <span class="va">mask</span>,</span>
+<span>  <span class="va">riverline</span>,</span>
+<span>  seg_length <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>  <span class="va">max_width</span>,</span>
+<span>  smooth_factor <span class="op">=</span> <span class="fl">2500</span>,</span>
+<span>  d <span class="op">=</span> <span class="fl">5000</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -60,7 +67,10 @@ alternatively, mask can also be a sf object with a polygon representing the rive
 
 <dt id="arg-seg-length">seg_length<a class="anchor" aria-label="anchor" href="#arg-seg-length"></a></dt>
 <dd><p>length of the desired river segments; choosing the appropriate scale of analysis will depend very much
-on the resolution of the input data and the scope of the specific analysis; default is 1 km</p></dd>
+on the resolution of the input data and the scope of the specific analysis; default is 1 km
+#' @param max_width Estimated maximum width of the river corridor used to create an initial boundary of the
+disaggregation; will be reduced to the boundaries of "mask" during the processing and thus should cover the
+maximum width of the corridor mask</p></dd>
 
 
 <dt id="arg-smooth-factor">smooth_factor<a class="anchor" aria-label="anchor" href="#arg-smooth-factor"></a></dt>
@@ -89,7 +99,7 @@ on the resolution of the input data and the scope of the specific analysis; defa
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>
