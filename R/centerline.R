@@ -5,6 +5,9 @@
 #' @param riverline sf object representing the river line
 #' @param seg_length length of the desired river segments; choosing the appropriate scale of analysis will depend very much 
 #' on the resolution of the input data and the scope of the specific analysis; default is 1 km
+#' #' @param max_width Estimated maximum width of the river corridor used to create an initial boundary of the 
+#' disaggregation; will be reduced to the boundaries of "mask" during the processing and thus should cover the
+#' maximum width of the corridor mask
 #' @param smooth_factor smoothing factor for converting the raster mask to polygon, a higher smooth parameter will result in higher degree of simplification of the polygon
 #' @param d length to extend the ends of the riverline in order to split the corridor outline; can be adjusted to avoid errors
 #' @author Florian Betz
@@ -12,7 +15,7 @@
 #' @export centerline
 #' 
 
-centerline<-function(mask,riverline, seg_length=1000, smooth_factor=2500, d=5000){
+centerline<-function(mask,riverline, seg_length=1000, max_width,smooth_factor=2500, d=5000){
   
   
   #Remove all attributes from the riverline to avoid errors
@@ -39,8 +42,10 @@ centerline<-function(mask,riverline, seg_length=1000, smooth_factor=2500, d=5000
     poly<-mask
   }
   
+  buff<-sf::st_buffer(riverline,dist = max_width)
+  
   #Convert the polygon to line
-  outline<-sf::st_boundary(poly)
+  outline<-sf::st_boundary(buff)
   
   #Extend the river line for splitting the outline
   riv_extended<-riverMapper::extend_line(riverline,d=d)

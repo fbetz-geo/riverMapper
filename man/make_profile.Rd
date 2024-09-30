@@ -4,12 +4,26 @@
 \alias{make_profile}
 \title{Creates a longitudinal profile using a DEM (or other raster) and a channel line as input}
 \usage{
-make_profile(channel_line, rast_file, plot = TRUE)
+make_profile(
+  channel_line,
+  rast_file,
+  dem,
+  start = "highest",
+  maxDist = 10,
+  plot = TRUE
+)
 }
 \arguments{
 \item{channel_line}{sf object containing the channel line}
 
 \item{rast_file}{terra object with the raster values to use for the profile}
+
+\item{dem}{digital elevation model used to specify the direction of the profile}
+
+\item{start}{where should the profile start? "Highest" will start compute the distances from source to mouth,
+"lowest" from mouth to source
+#'@param maxDist maximum distance (in meter) between two consecutive vertices when densifying the vertices of the line.
+Default is 10 m.In general, maxDist should be in a similar range as the resolution of the underlying elevation data.}
 
 \item{plot}{If TRUE, a line plot of the profile will be returned}
 }

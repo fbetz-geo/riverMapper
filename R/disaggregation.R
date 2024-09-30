@@ -19,8 +19,12 @@ disaggregation<-function(c_line,mask,seg_length=1000,start="lowest",dem){
   #Create polygon from the mask
   if (is(mask,"SpatRaster")) {
     poly<-terra::as.polygons(mask) %>% terra::fillHoles()
+  }
+  
+  if (is(mask,"SpatVector")) {
+    poly<-mask %>% terra::fillHoles()
   }else{
-    poly<-vect(mask) %>% terra::fillHoles()
+    poly<-terra::vect(mask) %>% terra::fillHoles()
   }
   
   #Temporary store coordinate system

@@ -10,6 +10,9 @@
 
 ortho_line<-function(line, line_length){
   
+  #Temporary store coordinate system
+  c_rs<-sf::st_crs(line)
+  
   #Dissolve line
   line<-sf::st_union(line)
   
@@ -45,7 +48,7 @@ ortho_line<-function(line, line_length){
   end_point_2 <- midpoint - line_length * orthogonal_direction
   
   #Create the outputline
-  orthogonal_line <- st_sfc(st_linestring(rbind(end_point_1, end_point_2)), crs = sf::st_crs(line_sf)) %>% sf::st_as_sf()
+  orthogonal_line <- st_sfc(st_linestring(rbind(end_point_1, end_point_2)), crs = c_rs) %>% sf::st_as_sf()
   
   return(orthogonal_line)
 }

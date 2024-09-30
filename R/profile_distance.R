@@ -25,17 +25,19 @@ profile_distance<-function(riverline, start="highest", dem,maxDist=10){
     c_rs<-sf::st_crs(riverline)
   }
   
-  #Densify line vertices
-  dist_line<-sf::st_segmentize(riverline,dfMaxLength = units::set_units(maxDist,m))
+  #Densify vertices of the riverline by maxdist
+  dist_line<-sf::st_segmentize(riverline,dfMaxLength = maxDist)
   
-  #Extract coordinates and compute distances
-  elev_pts<-sf::st_coordinates(dist_line) %>% as.data.frame() %>% 
-    
-    #Make points to extract values from DEM
-    sf::st_as_sf(coords=c("X","Y"),crs=c_rs)
+  #Create points along line
+  elev_pts<-sf::st_coordinates(dist_line) %>% as.data.frame() %>% sf::st_as_sf(coords=c("X","Y"),crs=c_rs)
   
-  #Grab elevation values from DEM and sort data.frame
-  dem<-rast(dem)
+  
+  #Load DEM
+  if(is(dem,"SpatRaster"))
+  {dem<-dem}else{
+    dem<-rast(dem)}
+  
+  #Grab values from DEM
   elev_pts$elev<-NA
   elev_pts$elev[1]<-terra::extract(dem, terra::vect(elev_pts[1,]))[1,2]
   elev_pts$elev[nrow(elev_pts)]<-terra::extract(dem, terra::vect(elev_pts[nrow(elev_pts),]))[1,2]
