@@ -2,7 +2,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # riverMapper
-<a href="https://github.com/fbetz-geo/riverMapper"><img align="right" src="https://github.com/fbetz-geo/riverMapper/blob/main/vignettes/riverMapper.png" height="350" width="600"/></a>
+<a href="https://github.com/fbetz-geo/riverMapper"><img align="right" src="https://github.com/fbetz-geo/riverMapper/blob/main/vignettes/riverMapper.png" height="250" width="250"/></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
