@@ -13,7 +13,7 @@ tailored to the needs of data-scarce environments and the use of
 globally available (satellite) data. This initial release includes channel delineation as well as the fuzzy logic based delineation of river corridors/riparian zones as described in [Betz et al. (2018)](https://doi.org/10.1016/j.geomorph.2018.01.024) and [Betz et al. 2020](https://doi.org/10.3390/rs12162533). 
 
 
-<a href="https://github.com/fbetz-geo/riverMapper"><img align="right" src="https://github.com/fbetz-geo/riverMapper/blob/main/vignettes/overview.png" /></a>
+<a href="https://github.com/fbetz-geo/riverMapper"><img align="center" src="https://github.com/fbetz-geo/riverMapper/blob/main/vignettes/Overview.png" /></a>
 
 
 
