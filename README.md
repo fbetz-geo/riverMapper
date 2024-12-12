@@ -2,7 +2,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # riverMapper
-<a href="https://github.com/fbetz-geo/riverMapper"><img align="right" src="https://github.com/fbetz-geo/riverMapper/blob/main/vignettes/riverMapper.png" height="250" width="250"/></a>
+<a href="https://github.com/fbetz-geo/riverMapper"><img align="right" src="https://github.com/fbetz-geo/riverMapper/blob/main/vignettes/riverMapper.png" height="150" width="150"/></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -11,6 +11,10 @@ R Package designed for mapping various geomorphological and (simple)
 vegetation attributes of river corridor. The package is specifically
 tailored to the needs of data-scarce environments and the use of
 globally available (satellite) data. This initial release includes channel delineation as well as the fuzzy logic based delineation of river corridors/riparian zones as described in [Betz et al. (2018)](https://doi.org/10.1016/j.geomorph.2018.01.024). 
+
+
+
+
 
 ## Installation
 
