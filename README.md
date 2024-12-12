@@ -23,5 +23,4 @@ library(remotes)
 remotes::install_github("fbetz-geo/riverMapper")
 ```
 
-## Tutorials
-### - [Channel extraction](https://fbetz-geo.github.io/riverMapper/articles/channel_extraction.html)
+
