@@ -7,10 +7,9 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-R Package designed for mapping various geomorphological and (simple)
-vegetation attributes of river corridor. The package is specifically
+R Package designed for the automated mapping of river corridors and is specifically
 tailored to the needs of data-scarce environments and the use of
-globally available (satellite) data. This initial release includes channel delineation as well as the fuzzy logic based delineation of river corridors/riparian zones as described in [Betz et al. (2018)](https://doi.org/10.1016/j.geomorph.2018.01.024) and [Betz et al. 2020](https://doi.org/10.3390/rs12162533). 
+globally available data. This initial release includes channel network extractionm the delineation of corridors/riparian zones as well as corridor segmentation and aggregation as described in [Betz et al. (2018)](https://doi.org/10.1016/j.geomorph.2018.01.024) and [Betz et al. (2020)](https://doi.org/10.3390/rs12162533). The Google Earth Engine integration will be released publically soon, so keep an eye on the Github. For the moment please contact Florian Betz (fbetz.geo@gmail.com) if you want to use it. 
 
 ## Installation
 
