@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Subsequent analysis steps of riverMapper require a channel network which is commonly derived from a digital elevation model. riverMapper has a wrapper for SAGA GIS to conduct channel network extraction from a digital elevation model.
+Subsequent analysis steps of riverMapper require a channel network which is commonly derived from a digital elevation model. riverMapper has a wrapper for SAGA GIS as well as to GRASS GIS to conduct channel network extraction from a digital elevation model. Both GIS backends have their own pros and cons, but in general the preference should be given to GRASS GIS when it comes to large scale river system analysis with globally available open access elevation models. 
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -16,11 +16,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-To use SAGA GIS from within the riverMapper package, you need to install SAGA GIS first. You can either do this manually from [sourceforge](https://sourceforge.net/projects/saga-gis/) or use the install_saga() function in riverMapper. The package has been designed to work with SAGA 9.0.1, later versions haven't been checked but should probably work.
-
+To use SAGA GIS from within the riverMapper package, you need to install SAGA GIS first. You can either do this manually from [sourceforge](https://sourceforge.net/projects/saga-gis/) or use the install_saga() function in riverMapper. The package has been designed to work with SAGA 8.4.1 due to the dependence of RSAGA on this version. 
 ```{r setup, include=TRUE}
-#library(riverMapper)
-#install_saga()
+library(riverMapper)
+install_saga()
 ```
 
 Everything the function needs as input is a path to a digital elevation model stored in a common raster format such as Geotiff. The function consists of several steps:
@@ -43,16 +42,15 @@ Everything the function needs as input is a path to a digital elevation model st
 Actually, the entire channel extraction procedure can be run in four lines of code:
 
 ```{r, include=TRUE}
-#library(riverMapper)
+library(riverMapper)
 
 #Set path to your DEM file
-#dem<-"Your_dem_file.tif"
+dem<-"Your_dem_file.tif"
 
-#Specfify the path to your SAGA; the function rsaga.env() from the RSAGA package allows 
-# to search for the path on your drive
-#saga_path<-rsaga.env()$path
+#Specfify the path to your SAGA; the function rsaga.env() from the RSAGA package allows to search for the path on your drive
+saga_path<-rsaga.env()$path
 
 #Specify output directory
-#out_dir<-"out_folder"
-#channels<-channelExtraction(dem=dem, preprocess="breach",  initiation="cit", thresh=50000,out_dir=out_dir)
+out_dir<-"out_folder"
+channels<-channelExtraction(dem=dem, preprocess="breach",  initiation="cit", thresh=50000,out_dir=out_dir)
 ```
